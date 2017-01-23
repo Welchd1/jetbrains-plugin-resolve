@@ -65,6 +65,7 @@
         <!-- completions -->
         <completion.contributor language="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.completion.RESOLVECompletionContributor"/>
         <completion.contributor language="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.completion.RESOLVEKeywordCompletionContributor"/>
+        <completion.contributor language="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.completion.MathSymbolCompletionContributor"/>
 
         <!-- formatter -->
 

@@ -7,10 +7,15 @@ import com.intellij.patterns.*;
 import com.intellij.patterns.PsiElementPattern.Capture;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiErrorElement;
+import com.intellij.psi.impl.source.tree.LeafPsiElement;
+import com.intellij.util.ProcessingContext;
 import edu.clemson.resolve.jetbrains.ResTypes;
 import edu.clemson.resolve.jetbrains.psi.*;
+import edu.clemson.resolve.jetbrains.psi.impl.ResPsiImplUtil;
+import org.jetbrains.annotations.NotNull;
 
 import static com.intellij.patterns.PlatformPatterns.psiElement;
+import static com.intellij.patterns.PlatformPatterns.psiFile;
 import static com.intellij.patterns.StandardPatterns.instanceOf;
 
 public class RESOLVEKeywordCompletionContributor extends CompletionContributor implements DumbAware {
@@ -30,6 +35,7 @@ public class RESOLVEKeywordCompletionContributor extends CompletionContributor i
         extend(CompletionType.BASIC, modulePattern(ResPrecisExtensionModuleDecl.class, ResPrecisBlock.class),
                 new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY,
                         "Implicit", "Definition", "Theorem", "Corollary", "Inductive"));
+
 
         extend(CompletionType.BASIC, modulePattern(ResImplModuleDecl.class, ResImplBlock.class),
                 new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY, "Definition"));
@@ -95,6 +101,8 @@ public class RESOLVEKeywordCompletionContributor extends CompletionContributor i
         extend(CompletionType.BASIC, initializationEnsures(),
                 new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY, "ensures"));
     }
+
+
 
     private static Capture<PsiElement> concVariablePattern() {
         return psiElement(ResTypes.IDENTIFIER)

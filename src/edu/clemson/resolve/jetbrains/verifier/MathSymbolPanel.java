@@ -391,8 +391,6 @@ public class MathSymbolPanel extends JBPanel {
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⋊", "rtie")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⊠", "timesbox")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊡", "dotbox")));
-
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∎", "blacksquare")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⨪", "minusdot")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∸", "dotminus")));
@@ -412,12 +410,13 @@ public class MathSymbolPanel extends JBPanel {
 */
         category.add(new DefaultMutableTreeNode(new SymbolInfo("≤", "leq")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("≥", "geq")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("≠", "noteq")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("≪", "lless")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("≫", "ggreater")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("≪", "ll")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("≫", "gg")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("≲", "leqsim")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("≳", "geqsim")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("≲", "lesssim")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("≳", "gtrsim")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⪅", "lessapprox")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⪆", "greaterapprox")));
@@ -437,7 +436,6 @@ public class MathSymbolPanel extends JBPanel {
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⊑", "sqsubseteq")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⊒", "sqsupseteq")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("≠", "noteq")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∼", "sim")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("≐", "doteq")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("≃", "simeq")));

@@ -114,6 +114,7 @@ public interface ResTypes {
   IElementType WHILE_STATEMENT = new ResCompositeElementType("WHILE_STATEMENT");
 
   IElementType ALTERS = new ResTokenType("alters");
+  IElementType BAD_CHARACTER = new ResTokenType("\"\\\\\"");
   IElementType BAR = new ResTokenType("|");
   IElementType BY = new ResTokenType("by");
   IElementType CART_PROD = new ResTokenType("Cart_Prod");

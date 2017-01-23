@@ -1,12 +1,10 @@
 package edu.clemson.resolve.jetbrains.psi.impl;
 
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.ResolveState;
 import com.intellij.psi.impl.light.LightElement;
 import com.intellij.psi.stubs.IStubElementType;
-import edu.clemson.resolve.jetbrains.psi.ResCompositeElement;
-import edu.clemson.resolve.jetbrains.psi.ResOperationLikeNode;
-import edu.clemson.resolve.jetbrains.psi.ResType;
-import edu.clemson.resolve.jetbrains.psi.ResTypeReferenceExp;
+import edu.clemson.resolve.jetbrains.psi.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -61,6 +59,12 @@ public abstract class ResLightType<E extends ResCompositeElement> extends LightE
         @Override
         public String getText() {
             return myElement.getText();
+        }
+
+        @Nullable
+        @Override
+        public ResMathExp getResMathMetaTypeExp(ResolveState context) {
+            return null;
         }
     }
 }

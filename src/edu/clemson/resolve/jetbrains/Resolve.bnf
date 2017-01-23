@@ -52,6 +52,7 @@
         LAMBDA                  = 'λ'
         COLON_EQUALS            = ':='
         COLON_EQUALS_COLON      = ':=:'
+    BAD_CHARACTER           =     '"\\"'
 
         FACILITY                = 'Facility'
         PRECIS                  = 'Precis'
@@ -222,7 +223,7 @@ private FacilityItemRecover ::= !('Facility'|'Definition'|'Operation'|'Type'|end
 
 // type refs & decls
 
-Type ::= RecordType | NamedType {methods=[getUnderlyingType]}
+Type ::= RecordType | NamedType {methods=[getUnderlyingType] extends=MathExp}
 private NamedType ::= TypeReferenceExp QualifiedTypeReferenceExp?
 TypeReferenceExp ::= identifier { methods=[getReference getQualifier resolve] }
 left QualifiedTypeReferenceExp ::= '::' identifier {elementType=TypeReferenceExp}

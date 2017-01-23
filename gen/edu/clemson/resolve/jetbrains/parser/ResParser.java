@@ -286,7 +286,6 @@ public class ResParser implements PsiParser, LightPsiParser {
   }
 
   public static final TokenSet[] EXTENDS_SETS_ = new TokenSet[] {
-    create_token_set_(RECORD_TYPE, TYPE),
     create_token_set_(MATH_VAR_DECL, MATH_VAR_DECL_GROUP),
     create_token_set_(EXP, INFIX_EXP, LITERAL_EXP, NESTED_EXP,
       PARAM_EXP, REFERENCE_EXP, SELECTOR_EXP),
@@ -296,7 +295,7 @@ public class ResParser implements PsiParser, LightPsiParser {
       MATH_CLSSFTN_ASSRT_EXP, MATH_EXP, MATH_INCOMING_EXP, MATH_INFIX_APPLY_EXP,
       MATH_LAMBDA_EXP, MATH_MIXFIX_APPLY_EXP, MATH_NESTED_EXP, MATH_OUTFIX_APPLY_EXP,
       MATH_PREFIX_APPLY_EXP, MATH_QUANTIFIED_EXP, MATH_REFERENCE_EXP, MATH_SELECTOR_EXP,
-      MATH_SET_EXP, MATH_SET_RESTRICTION_EXP),
+      MATH_SET_EXP, MATH_SET_RESTRICTION_EXP, RECORD_TYPE, TYPE),
   };
 
   /* ********************************************************** */
