@@ -77,13 +77,9 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
             @Override
             public void handleInsert(@NotNull InsertionContext context, LookupElement item) {
                 Editor editor = context.getEditor();
-                final int currentOffset = editor.getCaretModel().getOffset();
-                final CharSequence documentText = editor.getDocument().getImmutableCharSequence();
-                if (documentText.length() <= currentOffset || documentText.charAt(currentOffset) != ' ') {
+                if (context.getStartOffset() - 1 > 0) {
+                    editor.getDocument().deleteString(context.getStartOffset() - 1, context.getTailOffset());
                     EditorModificationUtil.insertStringAtCaret(editor, symbol);
-                }
-                else {
-                    EditorModificationUtil.moveCaretRelatively(editor, 1);
                 }
             }
         };
