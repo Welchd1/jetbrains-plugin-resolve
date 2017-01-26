@@ -26,15 +26,15 @@ public class RESOLVEKeywordCompletionContributor extends CompletionContributor i
                 new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY, "uses"));
 
         extend(CompletionType.BASIC, modulePattern(ResFacilityModuleDecl.class, ResFacilityBlock.class),
-                new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY, "Definition", "Implicit"));
+                new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY, "Definition", "Def", "Implicit"));
 
         extend(CompletionType.BASIC, modulePattern(ResPrecisModuleDecl.class, ResPrecisBlock.class),
                 new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY,
-                        "Implicit", "Definition", "Theorem", "Corollary", "Inductive", "Categorical"));
+                        "Implicit", "Definition", "Def", "Theorem", "Corollary", "Inductive", "Categorical"));
 
         extend(CompletionType.BASIC, modulePattern(ResPrecisExtensionModuleDecl.class, ResPrecisBlock.class),
                 new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY,
-                        "Implicit", "Definition", "Theorem", "Corollary", "Inductive"));
+                        "Implicit", "Definition", "Def", "Theorem", "Corollary", "Inductive"));
 
 
         extend(CompletionType.BASIC, modulePattern(ResImplModuleDecl.class, ResImplBlock.class),
@@ -58,7 +58,7 @@ public class RESOLVEKeywordCompletionContributor extends CompletionContributor i
                 new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY, "type"));
 
         extend(CompletionType.BASIC, definitionParameterPattern(),
-                new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY, "Definition"));
+                new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY, "Definition", "Def"));
 
         extend(CompletionType.BASIC, operationParamPattern(),
                 new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY, "OperationDeclaration"));

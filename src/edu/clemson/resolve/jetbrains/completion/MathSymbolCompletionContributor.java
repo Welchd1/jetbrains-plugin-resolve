@@ -113,7 +113,48 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("Downarrow", "⇓");
 
         //Greek
-        SYMBOL_MAP.put("Downarrow", "⇓");
+        SYMBOL_MAP.put("alpha", "α");
+        SYMBOL_MAP.put("beta", "β");
+        SYMBOL_MAP.put("gamma", "γ");
+        SYMBOL_MAP.put("delta", "δ");
+        SYMBOL_MAP.put("epsilon", "ε");
+        SYMBOL_MAP.put("zeta", "ζ");
+        SYMBOL_MAP.put("eta", "η");
+        SYMBOL_MAP.put("theta", "θ");
+        SYMBOL_MAP.put("iota", "ι");
+        SYMBOL_MAP.put("kappa", "κ");
+        SYMBOL_MAP.put("mu", "μ");
+        SYMBOL_MAP.put("nu", "ν");
+        SYMBOL_MAP.put("xi", "ξ");
+        SYMBOL_MAP.put("pi", "π");
+        SYMBOL_MAP.put("rho", "ρ");
+        SYMBOL_MAP.put("sigma", "σ");
+        SYMBOL_MAP.put("tau", "τ");
+        SYMBOL_MAP.put("phi", "φ");
+        SYMBOL_MAP.put("varphi", "φ");
+        SYMBOL_MAP.put("varphi", "φ");
+        SYMBOL_MAP.put("chi", "χ");
+        SYMBOL_MAP.put("psi", "ψ");
+        SYMBOL_MAP.put("omega", "ω");
+
+        SYMBOL_MAP.put("Gamma", "Γ");
+        SYMBOL_MAP.put("Delta", "Δ");
+        SYMBOL_MAP.put("Theta", "Θ");
+        SYMBOL_MAP.put("Lambda", "Λ");
+        SYMBOL_MAP.put("Xi", "Ξ");
+        SYMBOL_MAP.put("Sigma", "Σ");
+        SYMBOL_MAP.put("Phi", "Φ");
+        SYMBOL_MAP.put("Psi", "Ψ");
+        SYMBOL_MAP.put("Omega", "Ω");
+
+        //Letters
+        SYMBOL_MAP.put("Bool", "\uD835\uDD39");
+        SYMBOL_MAP.put("Complex", "ℂ");
+        SYMBOL_MAP.put("Nat", "ℕ");
+        SYMBOL_MAP.put("Rat", "ℚ");
+        SYMBOL_MAP.put("Real", "ℝ");
+        SYMBOL_MAP.put("Int", "ℤ");
+        SYMBOL_MAP.put("Powerset", "℘");
 
     }
 
