@@ -82,47 +82,39 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
     }
 
     private void populateMap() {
+        //Arrows
         SYMBOL_MAP.put("leftarrow", "←");
         SYMBOL_MAP.put("Leftarrow", "⇐");
-
         SYMBOL_MAP.put("longleftarrow", "⟵");
         SYMBOL_MAP.put("Longleftarrow", "⟸");
-
         SYMBOL_MAP.put("rightarrow", "→");
         SYMBOL_MAP.put("Rightarrow", "⇒");
-
         SYMBOL_MAP.put("longrightarrow", "⟶");
         SYMBOL_MAP.put("Longrightarrow", "⟹");
-
         SYMBOL_MAP.put("leftrightarrow", "↔");
         SYMBOL_MAP.put("Leftrightarrow", "⇔");
-
         SYMBOL_MAP.put("longleftrightarrow", "⟷");
         SYMBOL_MAP.put("Longleftrightarrow", "⟺");
-
         SYMBOL_MAP.put("hookleftarrow", "↩");
         SYMBOL_MAP.put("hookrightarrow", "↪");
-
         SYMBOL_MAP.put("leftharpoondown", "↽");
         SYMBOL_MAP.put("rightharpoondown", "⇁");
-
         SYMBOL_MAP.put("leftharpoonup", "↼");
         SYMBOL_MAP.put("rightharpoonup", "⇀");
-
         SYMBOL_MAP.put("leftrightharpoons", "⇌");
         SYMBOL_MAP.put("leadsto", "↝");
-
         SYMBOL_MAP.put("downharpoonleft", "⇃");
         SYMBOL_MAP.put("downharpoonright", "⇂");
-
         SYMBOL_MAP.put("upharpoonleft", "↿");
         SYMBOL_MAP.put("upharpoonright", "↾");
-
         SYMBOL_MAP.put("uparrow", "↑");
         SYMBOL_MAP.put("Uparrow", "⇑");
-
         SYMBOL_MAP.put("downarrow", "↓");
         SYMBOL_MAP.put("Downarrow", "⇓");
+
+        //Greek
+        SYMBOL_MAP.put("Downarrow", "⇓");
+
     }
 
     public boolean invokeAutoPopup(@NotNull PsiElement position, char typeChar) {
