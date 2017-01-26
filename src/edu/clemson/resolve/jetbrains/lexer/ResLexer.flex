@@ -147,6 +147,7 @@ ESCAPES = [abfnrtv]
 "do"                                    { return DO; }
 "decreasing"                            { return DECREASING; }
 "Definition"                            { return DEFINITION; }
+"Def"                                   { return DEFINITION; }
 "Defines"                               { return DEFINES; }
 "else"                                  { return ELSE; }
 "Extension"                             { return EXTENSION; }

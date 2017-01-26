@@ -183,19 +183,19 @@ class _ResLexer implements FlexLexer, ResTypes {
     "\1\0\3\5\3\0\1\42\1\43\1\0\1\44\1\45"+
     "\1\46\1\5\1\47\1\50\11\5\1\51\1\5\1\52"+
     "\21\5\1\53\12\5\1\41\3\5\1\54\1\55\1\1"+
-    "\1\56\2\0\1\57\23\5\1\60\33\5\1\61\1\5"+
-    "\1\41\1\0\2\5\1\62\1\63\1\0\13\5\1\64"+
-    "\1\65\1\66\4\5\1\67\21\5\1\70\11\5\1\71"+
-    "\2\5\1\72\1\5\1\73\52\5\1\74\1\75\6\5"+
-    "\1\76\5\5\1\77\12\5\1\100\15\5\1\101\1\5"+
-    "\1\102\7\5\1\103\11\5\1\104\11\5\1\105\3\5"+
-    "\1\106\1\107\7\5\1\110\5\5\1\111\1\112\1\113"+
-    "\1\114\3\5\1\115\2\5\1\116\3\5\1\117\5\5"+
-    "\1\120\1\5\1\121\5\5\1\122\1\5\1\123\1\124"+
-    "\1\125\1\126\1\5\1\127\4\5\1\130\2\5\1\131"+
-    "\1\5\1\132\1\5\1\133\1\134\3\5\1\135\1\136"+
-    "\3\5\1\137\5\5\1\140\1\5\1\141\1\142\1\143"+
-    "\1\144\1\145\6\5\1\146\1\147\1\150";
+    "\1\56\2\0\1\57\23\5\1\60\12\5\1\61\20\5"+
+    "\1\62\1\5\1\41\1\0\2\5\1\63\1\64\1\0"+
+    "\13\5\1\65\1\66\1\67\4\5\1\70\21\5\1\71"+
+    "\11\5\1\72\2\5\1\73\1\5\1\74\52\5\1\75"+
+    "\1\76\6\5\1\77\5\5\1\100\12\5\1\101\15\5"+
+    "\1\102\1\5\1\103\7\5\1\104\11\5\1\105\11\5"+
+    "\1\106\3\5\1\107\1\110\7\5\1\111\5\5\1\112"+
+    "\1\113\1\114\1\115\3\5\1\116\2\5\1\117\3\5"+
+    "\1\120\5\5\1\121\1\5\1\122\5\5\1\123\1\5"+
+    "\1\124\1\125\1\126\1\127\1\5\1\130\4\5\1\131"+
+    "\2\5\1\132\1\5\1\133\1\5\1\134\1\135\3\5"+
+    "\1\136\1\137\3\5\1\61\5\5\1\140\1\5\1\141"+
+    "\1\142\1\143\1\144\1\145\6\5\1\146\1\147\1\150";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[451];
@@ -1381,191 +1381,191 @@ class _ResLexer implements FlexLexer, ResTypes {
             }
           case 152: break;
           case 49: 
-            { return VAR;
+            { return DEFINITION;
             }
           case 153: break;
           case 50: 
-            { return FROM;
+            { return VAR;
             }
           case 154: break;
           case 51: 
-            { return IND_BASE;
+            { return FROM;
             }
           case 155: break;
           case 52: 
-            { return PARAM_TYPE;
+            { return IND_BASE;
             }
           case 156: break;
           case 53: 
-            { return TRUE;
+            { return PARAM_TYPE;
             }
           case 157: break;
           case 54: 
-            { return THEN;
+            { return TRUE;
             }
           case 158: break;
           case 55: 
-            { return ELSE;
+            { return THEN;
             }
           case 159: break;
           case 56: 
-            { return USES;
+            { return ELSE;
             }
           case 160: break;
           case 57: 
-            { return FAMILY_TYPE;
+            { return USES;
             }
           case 161: break;
           case 58: 
-            { return FALSE;
+            { return FAMILY_TYPE;
             }
           case 162: break;
           case 59: 
-            { return IND_HYPO;
+            { return FALSE;
             }
           case 163: break;
           case 60: 
-            { return WHILE;
+            { return IND_HYPO;
             }
           case 164: break;
           case 61: 
-            { return FAMILY;
+            { return WHILE;
             }
           case 165: break;
           case 62: 
-            { return ALTERS;
+            { return FAMILY;
             }
           case 166: break;
           case 63: 
-            { return PRECIS;
+            { return ALTERS;
             }
           case 167: break;
           case 64: 
-            { return CLEARS;
+            { return PRECIS;
             }
           case 168: break;
           case 65: 
-            { return RECORD;
+            { return CLEARS;
             }
           case 169: break;
           case 66: 
-            { return NOTICE;
+            { return RECORD;
             }
           case 170: break;
           case 67: 
-            { return CONCEPT;
+            { return NOTICE;
             }
           case 171: break;
           case 68: 
-            { return ENSURES;
+            { return CONCEPT;
             }
           case 172: break;
           case 69: 
-            { return DEFINES;
+            { return ENSURES;
             }
           case 173: break;
           case 70: 
-            { return MODELED;
+            { return DEFINES;
             }
           case 174: break;
           case 71: 
-            { return UPDATES;
+            { return MODELED;
             }
           case 175: break;
           case 72: 
-            { return THEOREM;
+            { return UPDATES;
             }
           case 176: break;
           case 73: 
-            { return REALIZED;
+            { return THEOREM;
             }
           case 177: break;
           case 74: 
-            { return REPLACES;
+            { return REALIZED;
             }
           case 178: break;
           case 75: 
-            { return RESTORES;
+            { return REPLACES;
             }
           case 179: break;
           case 76: 
-            { return REQUIRES;
+            { return RESTORES;
             }
           case 180: break;
           case 77: 
-            { return ENHANCED;
+            { return REQUIRES;
             }
           case 181: break;
           case 78: 
-            { return EXEMPLAR;
+            { return ENHANCED;
             }
           case 182: break;
           case 79: 
-            { return CHANGING;
+            { return EXEMPLAR;
             }
           case 183: break;
           case 80: 
-            { return FACILITY;
+            { return CHANGING;
             }
           case 184: break;
           case 81: 
-            { return IMPLICIT;
+            { return FACILITY;
             }
           case 185: break;
           case 82: 
-            { return CART_PROD;
+            { return IMPLICIT;
             }
           case 186: break;
           case 83: 
-            { return COROLLARY;
+            { return CART_PROD;
             }
           case 187: break;
           case 84: 
-            { return CHAINABLE;
+            { return COROLLARY;
             }
           case 188: break;
           case 85: 
-            { return PROCEDURE;
+            { return CHAINABLE;
             }
           case 189: break;
           case 86: 
-            { return OTHERWISE;
+            { return PROCEDURE;
             }
           case 190: break;
           case 87: 
-            { return EVALUATES;
+            { return OTHERWISE;
             }
           case 191: break;
           case 88: 
-            { return PRESERVES;
+            { return EVALUATES;
             }
           case 192: break;
           case 89: 
-            { return EXTENSION;
+            { return PRESERVES;
             }
           case 193: break;
           case 90: 
-            { return INDUCTIVE;
+            { return EXTENSION;
             }
           case 194: break;
           case 91: 
-            { return RECURSIVE;
+            { return INDUCTIVE;
             }
           case 195: break;
           case 92: 
-            { return OPERATION;
+            { return RECURSIVE;
             }
           case 196: break;
           case 93: 
-            { return DECREASING;
+            { return OPERATION;
             }
           case 197: break;
           case 94: 
-            { return EXTERNALLY;
+            { return DECREASING;
             }
           case 198: break;
           case 95: 
-            { return DEFINITION;
+            { return EXTERNALLY;
             }
           case 199: break;
           case 96: 
