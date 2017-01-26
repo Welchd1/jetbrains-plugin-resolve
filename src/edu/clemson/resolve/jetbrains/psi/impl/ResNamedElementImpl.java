@@ -140,7 +140,7 @@ public abstract class ResNamedElementImpl
     @Override
     public ResMathExp findSiblingMathMetaType() {
         ResMathExp purelyMathTypeExp = PsiTreeUtil.getNextSiblingOfType(this, ResMathExp.class);
-        if (purelyMathTypeExp != null) return purelyMathTypeExp;
+        //if (purelyMathTypeExp != null) return purelyMathTypeExp;
 
         //ok, maybe we're dealing with a programmatic type or something...
         ResType progType = findSiblingType();
