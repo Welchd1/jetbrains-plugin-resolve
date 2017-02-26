@@ -172,6 +172,7 @@ public class MathSymbolPanel extends JBPanel {
         addGreekSection(e);
         addLettersSection(e);
         addLogicSection(e);
+        addFundamentalSection(e);
         addPunctuationSection(e);
         addOperatorSection(e);
         addRelationSection(e);
@@ -182,22 +183,22 @@ public class MathSymbolPanel extends JBPanel {
         DefaultMutableTreeNode category = new DefaultMutableTreeNode("Arrows");
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("←", "leftarrow")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⇐", "CLeftarrow")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⇐", "Leftarrow")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⟵", "longleftarrow")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⟸", "CLongleftarrow")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⟸", "Longleftarrow")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("→", "rightarrow")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⇒", "CRightarrow")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⇒", "Rightarrow")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⟶", "longrightarrow")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⟹", "CLongrightarrow")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⟹", "Longrightarrow")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("↔", "leftrightarrow")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⇔", "CLeftrightarrow")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⇔", "Leftrightarrow")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⟷", "longleftrightarrow")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⟺", "CLongleftrightarrow")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⟺", "Longleftrightarrow")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("↩", "hookleftarrow")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("↪", "hookrightarrow")));
@@ -217,14 +218,11 @@ public class MathSymbolPanel extends JBPanel {
         category.add(new DefaultMutableTreeNode(new SymbolInfo("↿", "upharpoonleft")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("↾", "upharpoonright")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("↑", "up")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⇑", "CUp")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("↑", "uparrow")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⇑", "Uparrow")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("↓", "down")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⇓", "CDown")));
-
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("↕", "updown")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⇕", "CUpdown")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("↓", "downarrow")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⇓", "Downarrow")));
         e.add(category);
     }
 
@@ -242,7 +240,6 @@ public class MathSymbolPanel extends JBPanel {
         category.add(new DefaultMutableTreeNode(new SymbolInfo("θ", "theta")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("ι", "iota")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("κ", "kappa")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("λ", "lambda")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("μ", "mu")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("ν", "nu")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("ξ", "xi")));
@@ -252,22 +249,23 @@ public class MathSymbolPanel extends JBPanel {
         category.add(new DefaultMutableTreeNode(new SymbolInfo("σ", "sigma")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("τ", "tau")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("υ", "upsilon")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("φ", "phi")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("ϕ", "phi")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("φ", "varphi")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("χ", "chi")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("ψ", "psi")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("ω", "omega")));
 
         //capitals
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("Γ", "CGamma")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("Δ", "CDelta")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("Λ", "CLambda")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("Ξ", "CXi")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("Π", "CPi")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("Σ", "CSigma")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("Υ", "CUpsilon")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("Φ", "CPhi")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("Ψ", "CPsi")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("Ω", "COmega")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("Γ", "Gamma")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("Δ", "Delta")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("Θ", "Theta")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("Λ", "Lambda")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("Ξ", "Xi")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("Π", "Pi")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("Σ", "Sigma")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("Φ", "Phi")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("Ψ", "Psi")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("Ω", "Omega")));
         e.add(category);
     }
 
@@ -285,22 +283,20 @@ public class MathSymbolPanel extends JBPanel {
 
     private void addLogicSection(@NotNull DefaultMutableTreeNode e) {
         DefaultMutableTreeNode category = new DefaultMutableTreeNode("Logic");
-
-        //category.add(new DefaultMutableTreeNode(new SymbolInfo("⊥", "bottom")));
-        //category.add(new DefaultMutableTreeNode(new SymbolInfo("⊤", "top")));
-
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∧", "wedge")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋀", "CWedge")));
-
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋀", "bigwedge")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∨", "vee")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋁", "CVee")));
-
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("∀", "Forall")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("∃", "Exists")));
-
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋁", "bigvee")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("¬", "neg")));
-        //category.add(new DefaultMutableTreeNode(new SymbolInfo("□", "box")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("◇", "diamond")));
+        e.add(category);
+    }
+
+    private void addFundamentalSection(@NotNull DefaultMutableTreeNode e) {
+        DefaultMutableTreeNode category = new DefaultMutableTreeNode("Fundamental");
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("∀", "forall")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("∃", "exists")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊢", "vdash")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("λ", "lambda")));
         e.add(category);
     }
 
@@ -339,24 +335,24 @@ public class MathSymbolPanel extends JBPanel {
         DefaultMutableTreeNode category = new DefaultMutableTreeNode("Operators");
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∩", "cap")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋂", "CCap")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋂", "bigcap")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∪", "cup")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋃", "CCup")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋃", "bigcup")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⊔", "sqcup")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨆", "CSqcup")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨆", "bigsqcup")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⊓", "sqcap")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨅", "CSqcap")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨅", "bigsqcap")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∝", "propto")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊎", "cupplus")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨄", "CCupplus")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊎", "uplus")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨄", "biguplus")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("±", "plusminus")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("∓", "minusplus")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("±", "pm")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("∓", "mp")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("×", "times")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("÷", "div")));
@@ -366,51 +362,35 @@ public class MathSymbolPanel extends JBPanel {
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∘", "circ")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⊕", "oplus")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨁", "COplus")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨁", "bigoplus")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⊗", "otimes")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨂", "COtimes")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨂", "bigotimes")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⊙", "odot")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨀", "COdot")));
-
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨀", "bigodot")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⊖", "ominus")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⟕", "lojoin")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⟖", "rojoin")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⟗", "fojoin")));
-
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("∑", "CSum")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("∏", "CProd")));
-
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨿", "coprod")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("∐", "CCoprod")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("∑", "sum")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("∏", "prod")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("∐", "coprod")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⋈", "bowtie")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋉", "ltie")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋊", "rtie")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋉", "ltimes")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⋊", "rtimes")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊠", "timesbox")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊠", "boxtimes")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∎", "blacksquare")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⨪", "minusdot")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("∸", "dotminus")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊸", "multimap")));
         e.add(category);
     }
 
     private void addRelationSection(@NotNull DefaultMutableTreeNode e) {
         DefaultMutableTreeNode category = new DefaultMutableTreeNode("Relations");
-        /*
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊢", "turnstile")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊨", "Turnstile")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊩", "tturnstile")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊫", "TTurnstile")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊣", "stileturn")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("√", "surd")));
-*/
         category.add(new DefaultMutableTreeNode(new SymbolInfo("≤", "leq")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("≥", "geq")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("≠", "noteq")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("≠", "neq")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("≪", "ll")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("≫", "gg")));
@@ -419,7 +399,7 @@ public class MathSymbolPanel extends JBPanel {
         category.add(new DefaultMutableTreeNode(new SymbolInfo("≳", "gtrsim")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⪅", "lessapprox")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⪆", "greaterapprox")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⪆", "gtrapprox")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∈", "in")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∉", "notin")));
@@ -445,20 +425,15 @@ public class MathSymbolPanel extends JBPanel {
         category.add(new DefaultMutableTreeNode(new SymbolInfo("≅", "cong")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("≡", "equiv")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("≼", "preceq")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("≽", "succeq")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("≼", "preccurlyeq")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("≽", "succcurlyeq")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊲", "lhd")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊳", "rhd")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊲", "triangleleft")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊳", "triangleright")));
 
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊴", "lhdeq")));
-        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊵", "rhdeq")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊴", "trianglelefteq")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊵", "trianglerighteq")));
 
-        //category.add(new DefaultMutableTreeNode(new SymbolInfo("◃", "triangleleft")));
-        //category.add(new DefaultMutableTreeNode(new SymbolInfo("▹", "triangleright")));
-
-        //category.add(new DefaultMutableTreeNode(new SymbolInfo("△", "triangle")));
-        //category.add(new DefaultMutableTreeNode(new SymbolInfo("≜", "triangleq")));
         e.add(category);
     }
 

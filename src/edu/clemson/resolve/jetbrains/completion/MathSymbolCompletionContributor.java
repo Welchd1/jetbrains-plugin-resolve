@@ -166,6 +166,7 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("Forall", "∀");
         SYMBOL_MAP.put("Exists", "∃");
         SYMBOL_MAP.put("vdash", "⊢");
+        SYMBOL_MAP.put("lambda", "λ");
 
         //Punctuation and Brackets
         SYMBOL_MAP.put("langle", "⟨");
@@ -204,7 +205,6 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("bigodot", "⨀");
         SYMBOL_MAP.put("ominus", "⊖");
         SYMBOL_MAP.put("sum", "∑");
-        SYMBOL_MAP.put("prod", "∏");
         SYMBOL_MAP.put("prod", "∏");
         SYMBOL_MAP.put("coprod", "∐");
         SYMBOL_MAP.put("bowtie", "⋈");
