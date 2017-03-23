@@ -147,12 +147,12 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("Omega", "Ω");
 
         //Letters
-        SYMBOL_MAP.put("Bool", "\uD835\uDD39");
-        SYMBOL_MAP.put("Complex", "ℂ");
-        SYMBOL_MAP.put("Nat", "ℕ");
-        SYMBOL_MAP.put("Rat", "ℚ");
-        SYMBOL_MAP.put("Real", "ℝ");
-        SYMBOL_MAP.put("Int", "ℤ");
+        SYMBOL_MAP.put("B", "\uD835\uDD39");
+        SYMBOL_MAP.put("C", "ℂ");
+        SYMBOL_MAP.put("N", "ℕ");
+        SYMBOL_MAP.put("Q", "ℚ");
+        SYMBOL_MAP.put("R", "ℝ");
+        SYMBOL_MAP.put("Z", "ℤ");
         SYMBOL_MAP.put("Powerset", "℘");
 
         //Logic
@@ -163,8 +163,8 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("neg", "¬");
 
         //Fundamental
-        SYMBOL_MAP.put("Forall", "∀");
-        SYMBOL_MAP.put("Exists", "∃");
+        SYMBOL_MAP.put("forall", "∀");
+        SYMBOL_MAP.put("exists", "∃");
         SYMBOL_MAP.put("vdash", "⊢");
         SYMBOL_MAP.put("lambda", "λ");
 
