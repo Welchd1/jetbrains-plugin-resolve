@@ -57,6 +57,10 @@ public class ResReference extends PsiPolyVariantReferenceBase<ResReferenceExpBas
                 if (element.equals(o)) {
                     return !result.add(new PsiElementResolveResult(element));
                 }
+                //TODO: Added 3/23/17 to keep program contexts from ref'ing math defns.
+                //if (o instanceof ResReferenceExp && element instanceof ResMathDefnSig) {
+                //    return true;
+                //}
                 String name = ObjectUtils.chooseNotNull(state.get(ACTUAL_NAME),
                         element instanceof PsiNamedElement ? ((PsiNamedElement) element).getName() : null);
                 if (name != null && o.getIdentifier().textMatches(name)) {

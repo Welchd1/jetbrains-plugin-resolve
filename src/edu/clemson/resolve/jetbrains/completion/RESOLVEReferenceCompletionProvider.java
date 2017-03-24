@@ -31,11 +31,12 @@ public class RESOLVEReferenceCompletionProvider extends CompletionProvider<Compl
             set = set.withPrefixMatcher(createPrefixMatcher(set.getPrefixMatcher()));
             fillVariantsByReference(expression.getReference(), set);
         }
-        PsiElement parent = parameters.getPosition().getParent();
+        //TODO: Commented out as of 3/24/17 can't seem to remember why I thought below was necessary..
+        /*PsiElement parent = parameters.getPosition().getParent();
         if (parent != null) {
             fillVariantsByReference(parent.getReference(),
                     set.withPrefixMatcher(createPrefixMatcher(set.getPrefixMatcher())));
-        }
+        }*/
     }
 
     private static void fillVariantsByReference(@Nullable PsiReference reference,
@@ -47,7 +48,12 @@ public class RESOLVEReferenceCompletionProvider extends CompletionProvider<Compl
             fillVariantsByReference(ArrayUtil.getFirstElement(references), result);
         }*/
         else if (reference instanceof ResReference) {
-            ((ResReference) reference).processResolveVariants(new MyRESOLVEScopeProcessor(result, false));
+            ((ResReference) reference).processResolveVariants(new MyRESOLVEScopeProcessor(result, false) {
+                @Override
+                protected boolean accept(@NotNull PsiElement e) {
+                    return !(e instanceof ResMathDefnSig);
+                }
+            });
         }
         else if (reference instanceof ResTypeReference) {
             PsiElement element = reference.getElement();
