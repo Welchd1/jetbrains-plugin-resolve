@@ -297,6 +297,7 @@ public class MathSymbolPanel extends JBPanel {
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∃", "exists")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⊢", "vdash")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("λ", "lambda")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("≜", "triangleq")));
         e.add(category);
     }
 

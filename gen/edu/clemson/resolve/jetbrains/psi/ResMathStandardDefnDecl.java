@@ -35,6 +35,6 @@ public interface ResMathStandardDefnDecl extends ResMathDefnDecl {
   PsiElement getSemicolon();
 
   @Nullable
-  PsiElement getIs();
+  PsiElement getTriEquals();
 
 }

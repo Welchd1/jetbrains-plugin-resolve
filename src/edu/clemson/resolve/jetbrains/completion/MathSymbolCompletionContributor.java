@@ -164,6 +164,7 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("exists", "∃");
         SYMBOL_MAP.put("vdash", "⊢");
         SYMBOL_MAP.put("lambda", "λ");
+        SYMBOL_MAP.put("triangleq", "≜");
 
         //Punctuation and Brackets
         SYMBOL_MAP.put("langle", "⟨");

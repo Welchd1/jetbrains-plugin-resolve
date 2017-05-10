@@ -50,6 +50,7 @@
         FORALL                  = '∀'
         EXISTS                  = '∃'
         LAMBDA                  = 'λ'
+        TRI_EQUALS              = '≜'
         COLON_EQUALS            = ':='
         COLON_EQUALS_COLON      = ':=:'
     BAD_CHARACTER           =     '"\\"'
@@ -374,7 +375,7 @@ private MathDefnParamList ::= MathVarDeclGroup (',' MathVarDeclGroup)* {pin=1 re
 MathCategoricalDefnDecl ::= 'Categorical' 'Definition' for
 MathPrefixDefnSigs is MathExp ';' {pin=2}
 
-MathStandardDefnDecl ::= ('Chainable')? ('Implicit'?) 'Definition'  MathDefnSig (is MathAssertionExp)? ';' {pin=3}
+MathStandardDefnDecl ::= ('Chainable')? ('Implicit'?) 'Definition'  MathDefnSig ('≜' MathAssertionExp)? ';' {pin=3}
 
 MathInductiveDefnDecl ::= 'Inductive' 'Definition' MathDefnSig is
 '(i.)' MathAssertionExp ';'

@@ -210,6 +210,7 @@ public interface ResTypes {
   IElementType THEN = new ResTokenType("then");
   IElementType THEOREM = new ResTokenType("Theorem");
   IElementType TRIPLE_DOT = new ResTokenType("...");
+  IElementType TRI_EQUALS = new ResTokenType("≜");
   IElementType TRUE = new ResTokenType("true");
   IElementType UPDATES = new ResTokenType("updates");
   IElementType USES = new ResTokenType("uses");

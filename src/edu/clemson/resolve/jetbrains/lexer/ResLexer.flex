@@ -126,6 +126,7 @@ ESCAPES = [abfnrtv]
 // Operators
 
 "λ"                                     { return LAMBDA; }
+"≜"                                     { return TRI_EQUALS; }
 ":="                                    { return COLON_EQUALS; }
 ":=:"                                   { return COLON_EQUALS_COLON; }
 
