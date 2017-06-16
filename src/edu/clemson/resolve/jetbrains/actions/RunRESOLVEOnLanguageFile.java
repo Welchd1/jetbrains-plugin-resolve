@@ -124,7 +124,7 @@ public class RunRESOLVEOnLanguageFile extends Task.WithResult<Boolean, Exception
         }
 
         try {
-            compiler.processCommandLineTargets();
+            compiler.processCommandLineTarget();
         } catch (Throwable e) {
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);

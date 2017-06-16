@@ -47,7 +47,6 @@ public interface ResTypes {
   IElementType MATH_CART_PROD_EXP = new ResCompositeElementType("MATH_CART_PROD_EXP");
   IElementType MATH_CATEGORICAL_DEFN_DECL = new ResCompositeElementType("MATH_CATEGORICAL_DEFN_DECL");
   IElementType MATH_CLSSFTN_ASSRT_EXP = new ResCompositeElementType("MATH_CLSSFTN_ASSRT_EXP");
-  IElementType MATH_CLSSFTN_COROLLARY_DECL = new ResCompositeElementType("MATH_CLSSFTN_COROLLARY_DECL");
   IElementType MATH_EXP = new ResCompositeElementType("MATH_EXP");
   IElementType MATH_FUNCTION_APP_LIST = new ResCompositeElementType("MATH_FUNCTION_APP_LIST");
   IElementType MATH_INCOMING_EXP = new ResCompositeElementType("MATH_INCOMING_EXP");
@@ -63,6 +62,7 @@ public interface ResTypes {
   IElementType MATH_PREFIX_APPLY_EXP = new ResCompositeElementType("MATH_PREFIX_APPLY_EXP");
   IElementType MATH_PREFIX_DEFN_SIG = new ResCompositeElementType("MATH_PREFIX_DEFN_SIG");
   IElementType MATH_QUANTIFIED_EXP = new ResCompositeElementType("MATH_QUANTIFIED_EXP");
+  IElementType MATH_RECOGNITION_DECL = new ResCompositeElementType("MATH_RECOGNITION_DECL");
   IElementType MATH_REFERENCE_EXP = new ResCompositeElementType("MATH_REFERENCE_EXP");
   IElementType MATH_SELECTOR_EXP = new ResCompositeElementType("MATH_SELECTOR_EXP");
   IElementType MATH_SET_EXP = new ResCompositeElementType("MATH_SET_EXP");
@@ -198,6 +198,7 @@ public interface ResTypes {
   IElementType RCUP = new ResTokenType("⎠");
   IElementType REALIZATION = new ResTokenType("Realization");
   IElementType REALIZED = new ResTokenType("realized");
+  IElementType RECOGNITION = new ResTokenType("Recognition");
   IElementType RECORD = new ResTokenType("Record");
   IElementType RECURSIVE = new ResTokenType("Recursive");
   IElementType REPLACES = new ResTokenType("replaces");
@@ -209,6 +210,7 @@ public interface ResTypes {
   IElementType SYMBOL = new ResTokenType("symbol");
   IElementType THEN = new ResTokenType("then");
   IElementType THEOREM = new ResTokenType("Theorem");
+  IElementType TRICOLON = new ResTokenType("ː");
   IElementType TRIPLE_DOT = new ResTokenType("...");
   IElementType TRI_EQUALS = new ResTokenType("≜");
   IElementType TRUE = new ResTokenType("true");
@@ -326,9 +328,6 @@ public interface ResTypes {
       else if (type == MATH_CLSSFTN_ASSRT_EXP) {
         return new ResMathClssftnAssrtExpImpl(node);
       }
-      else if (type == MATH_CLSSFTN_COROLLARY_DECL) {
-        return new ResMathClssftnCorollaryDeclImpl(node);
-      }
       else if (type == MATH_FUNCTION_APP_LIST) {
         return new ResMathFunctionAppListImpl(node);
       }
@@ -370,6 +369,9 @@ public interface ResTypes {
       }
       else if (type == MATH_QUANTIFIED_EXP) {
         return new ResMathQuantifiedExpImpl(node);
+      }
+      else if (type == MATH_RECOGNITION_DECL) {
+        return new ResMathRecognitionDeclImpl(node);
       }
       else if (type == MATH_REFERENCE_EXP) {
         return new ResMathReferenceExpImpl(node);

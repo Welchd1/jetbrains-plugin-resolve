@@ -15,6 +15,7 @@ import java.util.Map;
 
 import static com.intellij.patterns.PlatformPatterns.*;
 
+//TODO: Z and Q don't complete
 public class MathSymbolCompletionContributor extends CompletionContributor {
 
     public static final Map<String, String> SYMBOL_MAP = new LinkedHashMap<>();
@@ -31,6 +32,7 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
                 if (parameters.getOffset() > 1 &&
                         doc.getCharsSequence().charAt(parameters.getOffset() - 1) == '\\') {
                     //so I think we want to pretty much add all elements in our symbol map
+                    Map<String, String> x = SYMBOL_MAP;
                     for (Map.Entry<String, String> keyword : SYMBOL_MAP.entrySet()) {
                         result.addElement(createMathSymbolLookupElement(keyword.getKey(), keyword.getValue()));
                     }
@@ -144,12 +146,12 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("Omega", "Ω");
 
         //Letters
-        SYMBOL_MAP.put("B", "\uD835\uDD39");
-        SYMBOL_MAP.put("C", "ℂ");
-        SYMBOL_MAP.put("N", "ℕ");
-        SYMBOL_MAP.put("Q", "ℚ");
-        SYMBOL_MAP.put("R", "ℝ");
-        SYMBOL_MAP.put("Z", "ℤ");
+        SYMBOL_MAP.put("Bool", "\uD835\uDD39");
+        SYMBOL_MAP.put("Complex", "ℂ");
+        SYMBOL_MAP.put("Nat", "ℕ");
+        SYMBOL_MAP.put("Rat", "ℚ");
+        SYMBOL_MAP.put("Real", "ℝ");
+        SYMBOL_MAP.put("Int", "ℤ");
         SYMBOL_MAP.put("Powerset", "℘");
 
         //Logic
@@ -165,6 +167,7 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("vdash", "⊢");
         SYMBOL_MAP.put("lambda", "λ");
         SYMBOL_MAP.put("triangleq", "≜");
+        SYMBOL_MAP.put("tricolon", "ː");
 
         //Punctuation and Brackets
         SYMBOL_MAP.put("langle", "⟨");

@@ -30,11 +30,11 @@ public class RESOLVEKeywordCompletionContributor extends CompletionContributor i
 
         extend(CompletionType.BASIC, modulePattern(ResPrecisModuleDecl.class, ResPrecisBlock.class),
                 new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY,
-                        "Implicit", "Definition", "Def", "Theorem", "Corollary", "Inductive", "Categorical"));
+                        "Implicit", "Definition", "Def", "Theorem", "Corollary", "Inductive", "Recognition", "Categorical"));
 
         extend(CompletionType.BASIC, modulePattern(ResPrecisExtensionModuleDecl.class, ResPrecisBlock.class),
                 new RESOLVEKeywordCompletionProvider(RESOLVECompletionUtil.KEYWORD_PRIORITY,
-                        "Implicit", "Definition", "Def", "Theorem", "Corollary", "Inductive"));
+                        "Implicit", "Definition", "Def", "Theorem", "Corollary", "Recognition", "Inductive"));
 
 
         extend(CompletionType.BASIC, modulePattern(ResImplModuleDecl.class, ResImplBlock.class),

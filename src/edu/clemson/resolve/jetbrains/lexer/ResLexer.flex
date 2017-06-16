@@ -117,6 +117,7 @@ ESCAPES = [abfnrtv]
 "("                                     { return LPAREN; }
 ")"                                     { return RPAREN; }
 ":"                                     { return COLON; }
+"ː"                                     { return TRICOLON; }
 "::"                                    { return COLON_COLON; }
 ";"                                     { return SEMICOLON; }
 ","                                     { return COMMA; }
@@ -181,6 +182,7 @@ ESCAPES = [abfnrtv]
 "Procedure"                             { return PROCEDURE; }
 "Precis"                                { return PRECIS; }
 "Recursive"                             { return RECURSIVE; }
+"Recognition"                           { return RECOGNITION; }
 "Record"                                { return RECORD; }
 "requires"                              { return REQUIRES; }
 "then"                                  { return THEN; }

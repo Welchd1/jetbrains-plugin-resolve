@@ -55,11 +55,10 @@ public class GenerateVCsAction extends RESOLVEAction implements AnAction.Transpa
         CompilerIssueListener issueListener = new CompilerIssueListener();
 
         RESOLVECompiler compiler = AnalyzeAction.setupAndRunCompiler(project, editor, resolveFile, argMap, issueListener);
-        if (compiler.commandlineTargets.get(0).hasParseErrors) return;
+        if (compiler.commandLineTarget.hasParseErrors) return;
         AnalyzeAction.annotateIssues(editor, resolveFile, compiler, issueListener);
 
-        if (compiler.commandlineTargets.size() == 0) return;
-        VCOutputFile vco = compiler.commandlineTargets.get(0).getVCOutput();
+        VCOutputFile vco = compiler.commandLineTarget.getVCOutput();
         if (vco == null) return;
 
         RESOLVEPluginController controller = RESOLVEPluginController.getInstance(project);

@@ -63,7 +63,7 @@ public class AnalyzeAction extends RESOLVEAction {
         CompilerIssueListener issueListener = new CompilerIssueListener();
 
         RESOLVECompiler compiler = setupAndRunCompiler(project, editor, resolveFile, argMap, issueListener);
-        if (compiler.commandlineTargets.get(0).hasParseErrors) return;
+        if (compiler.commandLineTarget.hasParseErrors) return;
 
         annotateIssues(editor, resolveFile, compiler, issueListener);
     }
@@ -98,7 +98,7 @@ public class AnalyzeAction extends RESOLVEAction {
                     project, "Analyzing Current Source", false) {
                 @Override
                 protected Boolean compute(@NotNull ProgressIndicator indicator) throws Exception {
-                    compiler.processCommandLineTargets();
+                    compiler.processCommandLineTarget();
                     return compiler.errMgr.getErrorCount() == 0;
                 }
             });
