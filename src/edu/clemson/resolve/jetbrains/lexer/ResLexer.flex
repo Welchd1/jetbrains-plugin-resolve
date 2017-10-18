@@ -46,11 +46,11 @@ U_ARROW     = ("←"|"⇐"|"⟵"|"⟸"|"→"|"⇒"|"⟶"|"⟹"|"↔"|"⇔"|"⟷"
                "⟺"|"↩"|"↪"|"↽"|"⇁"|"↼"|"⇀"|"⇌"|"↝"|"⇃"|"⇂"|"↿"|"↾"|
                "↑"|"⇑"|"↓"|"⇓"|"↕"|"⇕"|"↤"|"↦"|"↢"|"↣")
 
-U_LOGIC     = ("∧"|"⋀"|"∨"|"⋁"|"¬"|"⋄")
+U_LOGIC     = ("∧"|"⋀"|"∨"|"⋁"|"¬"|"⊤"|"⊥")
 
 U_LETTER    = ("𝔹"|"ℂ"|"ℕ"|"ℚ"|"ℝ"|"ℤ"|"℘")
 
-U_OPERATOR  = ("∩"|"⋂"|"∪"|"⋃"|"⊔"|"⨆"|"⊓"|"⨅"|"∝"|"⊎"|"⨄"|"±"|"∓"|"×"|"÷"|
+U_OPERATOR  = ("∩"|"⋂"|"∪"|"⊔"|"⨆"|"⊓"|"⨅"|"∝"|"⊎"|"⨄"|"±"|"∓"|"×"|"÷"|
                "⋅"|"⋆"|"∙"|"∘"|"⊕"|"⨁"|"⊗"|"⨂"|"⊙"|"⨀"|"⊖"|"⊘"|"⟕"|"⟖"|"⟗"|
                "∑"|"∏"|"⨿"|"∐"|"⋈"|"⋉"|"⋊"|"⊠"|"⊡"|"∎"|"⨪"|"∸")
 
@@ -112,6 +112,7 @@ ESCAPES = [abfnrtv]
 "}"                                     { return RBRACE; }
 "}}"                                    { return DBL_RBRACE; }
 
+"⋃"                                    { return BIG_UNION; }
 "′"                                     { return PRIME; }
 "|"                                     { return BAR; }
 "("                                     { return LPAREN; }
@@ -141,9 +142,10 @@ ESCAPES = [abfnrtv]
 "Categorical"                           { return CATEGORICAL; }
 "changing"                              { return CHANGING; }
 "Chainable"                             { return CHAINABLE; }
-"Concept"                               { return CONCEPT;  }
+"Concept"                               { return CONCEPT; }
 "constraints"                           { return CONSTRAINTS; }
 "conventions"                           { return CONVENTIONS; }
+"Valued"                                { return VALUED; }
 "Corollary"                             { return COROLLARY; }
 "correspondence"                        { return CORRESPONDENCE; }
 "do"                                    { return DO; }

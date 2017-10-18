@@ -25,6 +25,7 @@
         RBRACE                  = '}'
         DBL_RBRACE              = '}}'
 
+        BIG_UNION               = '⋃'
         DBL_BAR                 = '∥'
         LANGLE                  = '⟨'
         RANGLE                  = '⟩'
@@ -54,7 +55,7 @@
         TRI_EQUALS              = '≜'
         COLON_EQUALS            = ':='
         COLON_EQUALS_COLON      = ':=:'
-    BAD_CHARACTER           =     '"\\"'
+        BAD_CHARACTER           = '"\\"'
 
         FACILITY                = 'Facility'
         PRECIS                  = 'Precis'
@@ -81,6 +82,7 @@
         PROCEDURE               = 'Procedure'
         RECOGNITION             = 'Recognition'
         VAR                     = 'Var'
+        VALUED                  = 'Valued'
         WHILE                   = 'While'
         NOTICE                  = 'Notice'
 
@@ -196,7 +198,7 @@ private PrecisItem ::=
         | MathRecognitionDecl
         | MathInductiveDefnDecl {pin=1 recoverWhile=PrecisItemRecover}
 
-private PrecisItemRecover ::= !('Definition'|'Implicit'|'Theorem'|'Corollary'|'Categorical'|'Inductive'|'Recognition'|'Chainable'|end)
+private PrecisItemRecover ::= !('Definition'|'Implicit'|'Theorem'|'Corollary'|'Categorical'|'Inductive'|'Recognition'|'Chainable'|'Valued'|end)
 
 private ConceptItem ::=
       TypeModelDecl
@@ -204,7 +206,7 @@ private ConceptItem ::=
     | MathStandardDefnDecl
     | ConstraintsClause {pin=1 recoverWhile=ConceptItemRecover}
 
-private ConceptItemRecover ::= !('Type'|'Operation'|'Definition'|constraints|end)
+private ConceptItemRecover ::= !('Type'|'Operation'|'Definition'|'Valued'|constraints|end)
 
 private ImplItem ::=
       TypeReprDecl
@@ -366,7 +368,7 @@ private MathPrefixDefnSigs ::= MathPrefixDefnSig (',' MathPrefixDefnSig)* {recov
 private CategoricalSigListRec ::= !(is)
 
 MathInfixDefnSig ::= '(' MathVarDecl ')' MathSymbolName '(' MathVarDecl ')' (':'|'ː') MathExp {pin=4}
-MathOutfixDefnSig ::= MathBracketName '(' MathVarDecl ')' MathBracketName (':'|'ː') MathExp {pin=1}
+MathOutfixDefnSig ::= MathBracketName '(' MathDefnParamList ')' MathBracketName (':'|'ː') MathExp {pin=1}
 MathPostfixDefnSig ::= '(' MathVarDecl ')' MathBracketName '(' MathVarDecl ')' MathBracketName (':'|'ː') MathExp
 
 private MathDefinitionParams ::= '(' MathDefnParamList ')' { pin=1}
@@ -376,7 +378,7 @@ private MathDefnParamList ::= MathVarDeclGroup (',' MathVarDeclGroup)* {pin=1 re
 MathCategoricalDefnDecl ::= 'Categorical' 'Definition' for
 MathPrefixDefnSigs is MathExp ';' {pin=2}
 
-MathStandardDefnDecl ::= ('Chainable')? ('Implicit'?) 'Definition'  MathDefnSig ('≜' MathAssertionExp)? ';' {pin=3}
+MathStandardDefnDecl ::= ('Chainable')? ('Valued')? ('Implicit'?) 'Definition'  MathDefnSig ('≜' MathAssertionExp)? ';' {pin=4}
 
 MathInductiveDefnDecl ::= 'Inductive' 'Definition' MathDefnSig is
 '(i.)' MathAssertionExp ';'
@@ -420,14 +422,14 @@ MathNestedExp ::= '(' MathAssertionExp ')' {pin=1}
 MathSelectorExp ::= MathExp '.' MathExp
 MathPrefixApplyExp ::= MathExp MathFunctionAppList
 MathMixfixApplyExp ::= MathExp MathBracketName MathNonStdAppList MathBracketName {pin=4}
-MathOutfixApplyExp ::= MathBracketName MathExp MathBracketName
+MathOutfixApplyExp ::=  MathOutfixAppList
 MathInfixApplyExp ::= MathExp MathOpSymbolName MathExp {pin=2}
 //MathEqualsInfixApplyExp ::= MathExp ('='|'≠') MathExp
 MathClssftnAssrtExp ::= MathExp (':'|'ː') MathExp
 MathIncomingExp ::= '#' MathSymbolExp {pin=1}
 
 MathFunctionAppList ::= '(' MathArgList ')'
-
+private MathOutfixAppList ::= MathBracketName MathNonStdAppList MathBracketName {pin=3 recoverWhile=ParamListRec2}
 private MathNonStdAppList ::= MathExp (',' MathExp)* {pin=1}
 private MathArgList ::= MathExp (',' MathExp)* {pin=1 recoverWhile=ParamListRec}
 
@@ -436,11 +438,12 @@ private MathPrimeExp ::= MathIncomingExp | MathSymbolExp | MathSelectorExp | Mat
         | MathClssftnAssrtExp
         | MathOutfixApplyExp
         | MathCartProdExp
-        | MathSetExp
-        | MathSetRestrictionExp
+        | MathBigUnionExp
+     //   | MathSetExp
+     //   | MathSetRestrictionExp
 
 private MathOpSymbolName ::= MathSymbolExp
-MathBracketName ::= ('⟨'|'⟩'|'⌈'|'⌉'|'⎝'|'⎠'|'∥'|'['|']'|'|') {elementType=MathSymbolName}
+MathBracketName ::= ('⟨'|'⟩'|'⌈'|'⌉'|'⎝'|'⎠'|'∥'|'['|']'|'|'|'{'|'}') {elementType=MathSymbolName}
 MathSymbolName  ::= (identifier|int|symbol|mathsymbol|true|false)
 
 MathSymbolExp ::=  MathReferenceExp MathQualifiedReferenceExp? {elementType=MathReferenceExp}
@@ -453,5 +456,6 @@ MathLambdaExp ::= 'λ' MathVarDecl ','  MathExp {pin=1}
 MathAlternativeExp ::= '{{' MathAlternativesList '}}' {pin=1}
 MathAlternativesList ::= MathAlternativeItemExp+
 MathAlternativeItemExp ::= MathExp (if MathExp ';' | otherwise ';')
-MathSetRestrictionExp ::= '{' MathVarDecl '|' MathExp '}' {pin=1}
-MathSetExp ::= '{' MathExp? '}'
+//MathSetRestrictionExp ::= '{' MathVarDecl '|' MathExp '}' {pin=1}
+MathBigUnionExp ::= '⋃' MathVarDecl ',' MathExp
+//MathSetExp ::= '{' MathExp? '}'

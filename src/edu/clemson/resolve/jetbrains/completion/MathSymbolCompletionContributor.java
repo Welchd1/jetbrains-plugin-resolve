@@ -160,6 +160,16 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("vee", "∨");
         SYMBOL_MAP.put("bigvee", "⋁");
         SYMBOL_MAP.put("neg", "¬");
+        SYMBOL_MAP.put("top", "⊤");
+        SYMBOL_MAP.put("bottom", "⊥");
+
+        //Meta types
+        SYMBOL_MAP.put("Cls", "\uD835\uDDD6\uD835\uDDF9\uD835\uDE00");
+        SYMBOL_MAP.put("El", "\uD835\uDDD8\uD835\uDDF9");
+        SYMBOL_MAP.put("HBooleans", "\uD835\uDDD5");
+        SYMBOL_MAP.put("ME", "\uD835\uDDE0\uD835\uDDD8");
+        SYMBOL_MAP.put("Set", "\uD835\uDDE6\uD835\uDDF2\uD835\uDE01");
+        SYMBOL_MAP.put("HPowerset", "\uD835\uDDE3");
 
         //Fundamental
         SYMBOL_MAP.put("forall", "∀");
@@ -182,7 +192,7 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("cap", "∩");
         SYMBOL_MAP.put("bigcap", "⋂");
         SYMBOL_MAP.put("cup", "∪");
-        SYMBOL_MAP.put("bicup", "⋃");
+        SYMBOL_MAP.put("bigcup", "⋃");
         SYMBOL_MAP.put("sqcup", "⊔");
         SYMBOL_MAP.put("bigsqcup", "⨆");
         SYMBOL_MAP.put("sqcap", "⊓");
@@ -200,7 +210,7 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("circ", "∘");
         SYMBOL_MAP.put("oplus", "⊕");
         SYMBOL_MAP.put("bigoplus", "⨁");
-        SYMBOL_MAP.put("bigoplus", "⊗");
+        SYMBOL_MAP.put("otimes", "⊗");
         SYMBOL_MAP.put("bigotimes", "⨂");
         SYMBOL_MAP.put("odot", "⊙");
         SYMBOL_MAP.put("bigodot", "⨀");

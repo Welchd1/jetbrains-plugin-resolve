@@ -44,6 +44,7 @@ public interface ResTypes {
   IElementType MATH_ALTERNATIVE_EXP = new ResCompositeElementType("MATH_ALTERNATIVE_EXP");
   IElementType MATH_ALTERNATIVE_ITEM_EXP = new ResCompositeElementType("MATH_ALTERNATIVE_ITEM_EXP");
   IElementType MATH_ASSERTION_EXP = new ResCompositeElementType("MATH_ASSERTION_EXP");
+  IElementType MATH_BIG_UNION_EXP = new ResCompositeElementType("MATH_BIG_UNION_EXP");
   IElementType MATH_CART_PROD_EXP = new ResCompositeElementType("MATH_CART_PROD_EXP");
   IElementType MATH_CATEGORICAL_DEFN_DECL = new ResCompositeElementType("MATH_CATEGORICAL_DEFN_DECL");
   IElementType MATH_CLSSFTN_ASSRT_EXP = new ResCompositeElementType("MATH_CLSSFTN_ASSRT_EXP");
@@ -116,13 +117,13 @@ public interface ResTypes {
   IElementType ALTERS = new ResTokenType("alters");
   IElementType BAD_CHARACTER = new ResTokenType("\"\\\\\"");
   IElementType BAR = new ResTokenType("|");
+  IElementType BIG_UNION = new ResTokenType("⋃");
   IElementType BY = new ResTokenType("by");
   IElementType CART_PROD = new ResTokenType("Cart_Prod");
   IElementType CATEGORICAL = new ResTokenType("Categorical");
   IElementType CHAINABLE = new ResTokenType("Chainable");
   IElementType CHANGING = new ResTokenType("changing");
   IElementType CHAR = new ResTokenType("char");
-  IElementType CLASSIFICATION = new ResTokenType("Classification");
   IElementType CLEARS = new ResTokenType("clears");
   IElementType COLON = new ResTokenType(":");
   IElementType COLON_COLON = new ResTokenType("::");
@@ -216,6 +217,7 @@ public interface ResTypes {
   IElementType TRUE = new ResTokenType("true");
   IElementType UPDATES = new ResTokenType("updates");
   IElementType USES = new ResTokenType("uses");
+  IElementType VALUED = new ResTokenType("Valued");
   IElementType VAR = new ResTokenType("Var");
   IElementType WHICH_ENTAILS = new ResTokenType("which_entails");
   IElementType WHILE = new ResTokenType("While");
@@ -318,6 +320,9 @@ public interface ResTypes {
       }
       else if (type == MATH_ALTERNATIVE_ITEM_EXP) {
         return new ResMathAlternativeItemExpImpl(node);
+      }
+      else if (type == MATH_BIG_UNION_EXP) {
+        return new ResMathBigUnionExpImpl(node);
       }
       else if (type == MATH_CART_PROD_EXP) {
         return new ResMathCartProdExpImpl(node);
