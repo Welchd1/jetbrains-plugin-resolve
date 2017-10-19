@@ -27,6 +27,7 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
             protected void addCompletions(@NotNull final CompletionParameters parameters,
                                           ProcessingContext context,
                                           @NotNull CompletionResultSet result) {
+
                 Editor editor = parameters.getEditor();
                 Document doc = editor.getDocument();
                 if (parameters.getOffset() > 1 &&
@@ -44,6 +45,7 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
     @NotNull
     private LookupElement createMathSymbolLookupElement(@NotNull final String symbolCommand, String symbol) {
         final InsertHandler<LookupElement> handler = createMathSymbolInsertHandler(symbolCommand, symbol);
+
         return createKeywordLookupElement(symbolCommand, symbol, handler);
     }
 
@@ -73,10 +75,16 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
                 .withRenderer(new LookupElementRenderer<LookupElement>() {
                     @Override
                     public void renderElement(LookupElement element, LookupElementPresentation p) {
+                        //why have one char of blank tail text? See:
+                        //https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000666150-Keeping-completion-list-open-on-an-exact-single-match
+                        //
+                        //this was easier than subclassing.
+                        p.setTailText(" ");
                         p.setItemText(symbolCommand);
                         p.setTypeText(symbol);
                     }
                 });
+
         return PrioritizedLookupElement.withPriority(builder, RESOLVECompletionUtil.VAR_PRIORITY);
     }
 
@@ -154,6 +162,33 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("Real", "ℝ");
         SYMBOL_MAP.put("Int", "ℤ");
         SYMBOL_MAP.put("Powerset", "℘");
+
+        SYMBOL_MAP.put("AA", "𝒜");
+        SYMBOL_MAP.put("BB", "ℬ");
+        SYMBOL_MAP.put("CC", "𝒞");
+        SYMBOL_MAP.put("DD", "𝒟");
+        SYMBOL_MAP.put("EE", "ℰ");
+        SYMBOL_MAP.put("FF", "ℱ");
+        SYMBOL_MAP.put("GG", "𝒢");
+        SYMBOL_MAP.put("HH", "ℋ");
+        SYMBOL_MAP.put("II", "ℐ");
+        SYMBOL_MAP.put("JJ", "𝒥");
+        SYMBOL_MAP.put("KK", "𝒦");
+        SYMBOL_MAP.put("LL", "ℒ");
+        SYMBOL_MAP.put("MM", "ℳ");
+        SYMBOL_MAP.put("NN", "𝒩");
+        SYMBOL_MAP.put("OO", "𝒪");
+        SYMBOL_MAP.put("PP", "𝒫");
+        SYMBOL_MAP.put("QQ", "𝒬");
+        SYMBOL_MAP.put("RR", "ℛ");
+        SYMBOL_MAP.put("SS", "𝒮");
+        SYMBOL_MAP.put("TT", "𝒯");
+        SYMBOL_MAP.put("UU", "𝒰");
+        SYMBOL_MAP.put("VV", "𝒱");
+        SYMBOL_MAP.put("WW", "𝒲");
+        SYMBOL_MAP.put("XX", "𝒳");
+        SYMBOL_MAP.put("YY", "𝒴");
+        SYMBOL_MAP.put("ZZ", "𝒵");
 
         //Logic
         SYMBOL_MAP.put("wedge", "∧");
