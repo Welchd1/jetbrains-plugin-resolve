@@ -429,7 +429,7 @@ MathClssftnAssrtExp ::= MathExp (':'|'ː') MathExp
 MathIncomingExp ::= '#' MathSymbolExp {pin=1}
 
 MathFunctionAppList ::= '(' MathArgList ')'
-private MathOutfixAppList ::= MathBracketName MathNonStdAppList MathBracketName {pin=3 recoverWhile=ParamListRec2}
+private MathOutfixAppList ::= MathBracketName MathNonStdAppList MathBracketName {pin=3}
 private MathNonStdAppList ::= MathExp (',' MathExp)* {pin=1}
 private MathArgList ::= MathExp (',' MathExp)* {pin=1 recoverWhile=ParamListRec}
 

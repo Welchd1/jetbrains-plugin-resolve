@@ -90,6 +90,7 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("Rightarrow", "⇒");
         SYMBOL_MAP.put("longrightarrow", "⟶");
         SYMBOL_MAP.put("Longrightarrow", "⟹");
+        SYMBOL_MAP.put("Longrightfromarrow", "⟾");
         SYMBOL_MAP.put("leftrightarrow", "↔");
         SYMBOL_MAP.put("Leftrightarrow", "⇔");
         SYMBOL_MAP.put("longleftrightarrow", "⟷");
@@ -162,14 +163,8 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("neg", "¬");
         SYMBOL_MAP.put("top", "⊤");
         SYMBOL_MAP.put("bottom", "⊥");
-
-        //Meta types
-        SYMBOL_MAP.put("Cls", "\uD835\uDDD6\uD835\uDDF9\uD835\uDE00");
-        SYMBOL_MAP.put("El", "\uD835\uDDD8\uD835\uDDF9");
-        SYMBOL_MAP.put("HBooleans", "\uD835\uDDD5");
-        SYMBOL_MAP.put("ME", "\uD835\uDDE0\uD835\uDDD8");
-        SYMBOL_MAP.put("Set", "\uD835\uDDE6\uD835\uDDF2\uD835\uDE01");
-        SYMBOL_MAP.put("HPowerset", "\uD835\uDDE3");
+        SYMBOL_MAP.put("slopewedge", "⩘");
+        SYMBOL_MAP.put("slopevee", "⩗");
 
         //Fundamental
         SYMBOL_MAP.put("forall", "∀");

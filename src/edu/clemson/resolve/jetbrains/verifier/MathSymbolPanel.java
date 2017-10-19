@@ -193,6 +193,7 @@ public class MathSymbolPanel extends JBPanel {
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⟶", "longrightarrow")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⟹", "Longrightarrow")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⟾", "Longrightfromarrow")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("↔", "leftrightarrow")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⇔", "Leftrightarrow")));
@@ -288,6 +289,10 @@ public class MathSymbolPanel extends JBPanel {
         category.add(new DefaultMutableTreeNode(new SymbolInfo("∨", "vee")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("⋁", "bigvee")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("¬", "neg")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⩘", "slopewedge")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⩗", "slopevee")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊤", "top")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("⊥", "bottom")));
         e.add(category);
     }
 

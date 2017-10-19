@@ -66,8 +66,6 @@ public interface ResTypes {
   IElementType MATH_RECOGNITION_DECL = new ResCompositeElementType("MATH_RECOGNITION_DECL");
   IElementType MATH_REFERENCE_EXP = new ResCompositeElementType("MATH_REFERENCE_EXP");
   IElementType MATH_SELECTOR_EXP = new ResCompositeElementType("MATH_SELECTOR_EXP");
-  IElementType MATH_SET_EXP = new ResCompositeElementType("MATH_SET_EXP");
-  IElementType MATH_SET_RESTRICTION_EXP = new ResCompositeElementType("MATH_SET_RESTRICTION_EXP");
   IElementType MATH_STANDARD_DEFN_DECL = new ResCompositeElementType("MATH_STANDARD_DEFN_DECL");
   IElementType MATH_SYMBOL_NAME = new ResCompositeElementType("MATH_SYMBOL_NAME");
   IElementType MATH_THEOREM_DECL = new ResCompositeElementType("MATH_THEOREM_DECL");
@@ -383,12 +381,6 @@ public interface ResTypes {
       }
       else if (type == MATH_SELECTOR_EXP) {
         return new ResMathSelectorExpImpl(node);
-      }
-      else if (type == MATH_SET_EXP) {
-        return new ResMathSetExpImpl(node);
-      }
-      else if (type == MATH_SET_RESTRICTION_EXP) {
-        return new ResMathSetRestrictionExpImpl(node);
       }
       else if (type == MATH_STANDARD_DEFN_DECL) {
         return new ResMathStandardDefnDeclImpl(node);
