@@ -161,6 +161,7 @@ public class MathSymbolCompletionContributor extends CompletionContributor {
         SYMBOL_MAP.put("Rat", "ℚ");
         SYMBOL_MAP.put("Real", "ℝ");
         SYMBOL_MAP.put("Int", "ℤ");
+        SYMBOL_MAP.put("Powerclass", "𝓟");
         SYMBOL_MAP.put("Powerset", "℘");
 
         SYMBOL_MAP.put("AA", "𝒜");

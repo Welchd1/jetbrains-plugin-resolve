@@ -278,6 +278,7 @@ public class MathSymbolPanel extends JBPanel {
         category.add(new DefaultMutableTreeNode(new SymbolInfo("ℚ", "Rat")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("ℝ", "Real")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("ℤ", "Int")));
+        category.add(new DefaultMutableTreeNode(new SymbolInfo("𝓟", "Powerclass")));
         category.add(new DefaultMutableTreeNode(new SymbolInfo("℘", "Powerset")));
 
         category.add(new DefaultMutableTreeNode(new SymbolInfo("𝒜", "AA")));
