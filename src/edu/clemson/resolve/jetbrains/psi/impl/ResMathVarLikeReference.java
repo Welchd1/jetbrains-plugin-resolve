@@ -94,7 +94,7 @@ public class ResMathVarLikeReference
         if (!processBlock(processor, state, true)) return false;
         if (!processModuleLevelEntities(file, processor, state, localResolve)) return false;
         if (!ResReference.processUsesImports(file, processor, state)) return false;
-        if (!processBuiltin(processor, state, myElement)) return false;
+        //if (!processBuiltin(processor, state, myElement)) return false;
         return true;
     }
 
@@ -192,12 +192,11 @@ public class ResMathVarLikeReference
                 .createSmartPsiElementPointer(myElement));
     }
 
-    private boolean processBuiltin(@NotNull ResScopeProcessor processor,
-                                   @NotNull ResolveState state,
-                                   @NotNull ResCompositeElement element) {
-        ResFile f = ResElementFactory.getHardCodedMathFile(element.getProject());
-        return processModuleLevelEntities(f, processor, state, true);
-    }
+    //private boolean processBuiltin(@NotNull ResScopeProcessor processor,
+    //                                @NotNull ResolveState state, @NotNull ResCompositeElement element) {
+    //    ResFile f = ResElementFactory.getHardCodedMathFile(element.getProject());
+    //    return processModuleLevelEntities(f, processor, state, true);
+    //}
 
     private boolean processNamedElements(@NotNull PsiScopeProcessor processor,
                                          @NotNull ResolveState state,

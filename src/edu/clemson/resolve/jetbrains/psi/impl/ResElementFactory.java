@@ -31,23 +31,12 @@ public class ResElementFactory {
 
     //TODO: I don't want this to be navigatble.. Figure out how to accomplish this. (or at least make the module
     //navigatable, but obfuscate the body)
-    @NotNull
+   /* @NotNull
     public static ResFile getHardCodedMathFile(@NotNull Project project) {
         final String hardcoded =
                 "Precis Builtin_Class_Theory;\n " +
-                    "Definition Cls : HypCls;\n\n" +
-                    "Definition El : Cls;\n\n" +
-                    "Definition SSet : Cls;\n\n" +
-                    "Definition \uD835\uDD39 : SSet;\n\n" +
-                    "Definition true : B;\n\n" +
-                    "Definition false : B;\n\n" +
-                    "Definition ℘(S : Cls) : Cls;\n\n" +
-                    "Definition ∧(a, b : B) : B;\n\n" +
-                    "Definition ∨(a, b : B) : B;\n\n" +
-                    "Definition ¬(a : B) : B;\n\n" +
-                    "Definition ⟹(a, b : B) : B;\n\n" +
-                    //"Definition iff(a, b : B) : B;\n" +
+                    "Definition Cls : 𝒫(ℳℰ)\n" +
                 "end Builtin_Class_Theory;";
         return createFileFromText(project, hardcoded);
-    }
+    }*/
 }
