@@ -10,50 +10,50 @@ import javax.swing.*;
 
 public interface ResolveIcons {
 
-    public static final Icon DIRECTORY = PlatformIcons.FOLDER_ICON;
+    Icon DIRECTORY = PlatformIcons.FOLDER_ICON;
 
-    public static final Icon MODULE = IconLoader.getIcon("/edu/clemson/resolve/icons/module.png");
-    public static final Icon TOOL_ICON = IconLoader.getIcon("/edu/clemson/resolve/icons/tool_icon.png");
+    Icon MODULE = IconLoader.getIcon("/edu/clemson/resolve/icons/module.png");
+    Icon TOOL_ICON = IconLoader.getIcon("/edu/clemson/resolve/icons/tool_icon.png");
 
-    public static final Icon VC = IconLoader.getIcon("/edu/clemson/resolve/icons/vc.png");
-    public static final Icon VC_PANEL = IconLoader.getIcon("/edu/clemson/resolve/icons/vc@2x.png");
+    Icon VC = IconLoader.getIcon("/edu/clemson/resolve/icons/vc.png");
+    Icon VC_PANEL = IconLoader.getIcon("/edu/clemson/resolve/icons/vc@2x.png");
 
-    public static final Icon FILE = IconLoader.getIcon("/edu/clemson/resolve/icons/file.png");
-    public static final Icon PROGRAM_RUN = Helper.createIconWithShift(TOOL_ICON, AllIcons.Nodes.RunnableMark);
+    Icon FILE = IconLoader.getIcon("/edu/clemson/resolve/icons/file.png");
+    Icon PROGRAM_RUN = Helper.createIconWithShift(TOOL_ICON, AllIcons.Nodes.RunnableMark);
 
-    public static final Icon FACILITY = IconLoader.getIcon("/edu/clemson/resolve/icons/facility.png");
+    Icon FACILITY = IconLoader.getIcon("/edu/clemson/resolve/icons/facility.png");
 
-    public static final Icon CONCEPT = IconLoader.getIcon("/edu/clemson/resolve/icons/concept.png");
-    public static final Icon IMPL = IconLoader.getIcon("/edu/clemson/resolve/icons/implementation.png");
-    public static final Icon CONCEPT_EXT = IconLoader.getIcon("/edu/clemson/resolve/icons/concept_extension.png");
+    Icon CONCEPT = IconLoader.getIcon("/edu/clemson/resolve/icons/concept.png");
+    Icon IMPL = IconLoader.getIcon("/edu/clemson/resolve/icons/implementation.png");
+    Icon CONCEPT_EXT = IconLoader.getIcon("/edu/clemson/resolve/icons/concept_extension.png");
 
-    public static final Icon PRECIS = IconLoader.getIcon("/edu/clemson/resolve/icons/precis.png");
-    public static final Icon PRECIS_EXT = IconLoader.getIcon("/edu/clemson/resolve/icons/precis_extension.png");
+    Icon PRECIS = IconLoader.getIcon("/edu/clemson/resolve/icons/precis.png");
+    Icon PRECIS_EXT = IconLoader.getIcon("/edu/clemson/resolve/icons/precis_extension.png");
 
-    public static final Icon DEF = IconLoader.getIcon("/edu/clemson/resolve/icons/def.png");
-    public static final Icon TYPE_MODEL = IconLoader.getIcon("/edu/clemson/resolve/icons/type_model.png");
-    public static final Icon TYPE_REPR = IconLoader.getIcon("/edu/clemson/resolve/icons/type_repr.png");
-    public static final Icon GENERIC_TYPE = IconLoader.getIcon("/edu/clemson/resolve/icons/generic_type.png");
-    public static final Icon PARAMETER = IconLoader.getIcon("/edu/clemson/resolve/icons/parameter_alt.png");
-    public static final Icon VARIABLE = IconLoader.getIcon("/edu/clemson/resolve/icons/variable.png");
+    Icon DEF = IconLoader.getIcon("/edu/clemson/resolve/icons/def.png");
+    Icon TYPE_MODEL = IconLoader.getIcon("/edu/clemson/resolve/icons/type_model.png");
+    Icon TYPE_REPR = IconLoader.getIcon("/edu/clemson/resolve/icons/type_repr.png");
+    Icon GENERIC_TYPE = IconLoader.getIcon("/edu/clemson/resolve/icons/generic_type.png");
+    Icon PARAMETER = IconLoader.getIcon("/edu/clemson/resolve/icons/parameter_alt.png");
+    Icon VARIABLE = IconLoader.getIcon("/edu/clemson/resolve/icons/variable.png");
 
-    public static final Icon RECORD_FIELD = IconLoader.getIcon("/edu/clemson/resolve/icons/record_field.png");
-    public static final Icon EXEMPLAR = IconLoader.getIcon("/edu/clemson/resolve/icons/exemplar.png");
+    Icon RECORD_FIELD = IconLoader.getIcon("/edu/clemson/resolve/icons/record_field.png");
+    Icon EXEMPLAR = IconLoader.getIcon("/edu/clemson/resolve/icons/exemplar.png");
 
-    public static final Icon FUNCTION_DECL = IconLoader.getIcon("/edu/clemson/resolve/icons/function.png");
-    public static final Icon FUNCTION_IMPL = IconLoader.getIcon("/edu/clemson/resolve/icons/function_impl.png");
+    Icon FUNCTION_DECL = IconLoader.getIcon("/edu/clemson/resolve/icons/function.png");
+    Icon FUNCTION_IMPL = IconLoader.getIcon("/edu/clemson/resolve/icons/function_impl.png");
 
-    public static final Icon PROVED = IconLoader.getIcon("/edu/clemson/resolve/icons/proved.png");
-    public static final Icon NOT_PROVED = IconLoader.getIcon("/edu/clemson/resolve/icons/not_proved.png");
-    public static final Icon CHECKMARK = IconLoader.getIcon("/edu/clemson/resolve/icons/proved_alt.png");
+    Icon PROVED = IconLoader.getIcon("/edu/clemson/resolve/icons/proved.png");
+    Icon NOT_PROVED = IconLoader.getIcon("/edu/clemson/resolve/icons/not_proved.png");
+    Icon CHECKMARK = IconLoader.getIcon("/edu/clemson/resolve/icons/proved_alt.png");
 
-    public static final Icon TIMED_OUT = IconLoader.getIcon("/edu/clemson/resolve/icons/timeout.png");  //TODO: Make this exlamation point (with triangle, etc)
+    Icon TIMED_OUT = IconLoader.getIcon("/edu/clemson/resolve/icons/timeout.png");  //TODO: Make this exlamation point (with triangle, etc)
 
-    public static final Icon SYMBOL_ICON = IconLoader.getIcon("/edu/clemson/resolve/icons/symbols_icon.png");
+    Icon SYMBOL_ICON = IconLoader.getIcon("/edu/clemson/resolve/icons/symbols_icon.png");
 
     /**
-     * Places a small icon (mark) in the lower right hand corner of the {@code base} icon.
-     * Used from go lang plugin.
+     * Places a small icon (mark) in the lower right hand corner of the
+     * {@code base} icon. Used from go lang plugin.
      */
     class Helper {
         private Helper() {}
