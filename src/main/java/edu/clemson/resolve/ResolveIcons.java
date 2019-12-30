@@ -8,9 +8,9 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
-public interface RESOLVEIcons {
+public interface ResolveIcons {
 
-    public static final Icon DIRECTORY = PlatformIcons.DIRECTORY_CLOSED_ICON;
+    public static final Icon DIRECTORY = PlatformIcons.FOLDER_ICON;
 
     public static final Icon MODULE = IconLoader.getIcon("/edu/clemson/resolve/icons/module.png");
     public static final Icon TOOL_ICON = IconLoader.getIcon("/edu/clemson/resolve/icons/tool_icon.png");
@@ -50,26 +50,6 @@ public interface RESOLVEIcons {
     public static final Icon TIMED_OUT = IconLoader.getIcon("/edu/clemson/resolve/icons/timeout.png");  //TODO: Make this exlamation point (with triangle, etc)
 
     public static final Icon SYMBOL_ICON = IconLoader.getIcon("/edu/clemson/resolve/icons/symbols_icon.png");
-
-    public static final Icon PROCESSING1 = IconLoader.getIcon("/runConfigurations/testInProgress1.png");
-    public static final Icon PROCESSING2 = IconLoader.getIcon("/runConfigurations/testInProgress2.png");
-    public static final Icon PROCESSING3 = IconLoader.getIcon("/runConfigurations/testInProgress3.png");
-    public static final Icon PROCESSING4 = IconLoader.getIcon("/runConfigurations/testInProgress4.png");
-    public static final Icon PROCESSING5 = IconLoader.getIcon("/runConfigurations/testInProgress5.png");
-    public static final Icon PROCESSING6 = IconLoader.getIcon("/runConfigurations/testInProgress6.png");
-    public static final Icon PROCESSING7 = IconLoader.getIcon("/runConfigurations/testInProgress7.png");
-    public static final Icon PROCESSING8 = IconLoader.getIcon("/runConfigurations/testInProgress8.png");
-
-    public static final Icon RIGHT_TRIANGLE = IconLoader.getIcon("/edu/clemson/resolve/icons/righttriangle.png");
-    public static final Icon DOWN_TRIANGLE = IconLoader.getIcon("/edu/clemson/resolve/icons/downtriangle.png");
-
-    //Toolbar icons
-    public static final Icon RERUN = IconLoader.getIcon("/edu/clemson/resolve/icons/rerun.png");
-    public static final Icon STOP = IconLoader.getIcon("/edu/clemson/resolve/icons/suspend.png");
-    public static final Icon COLLAPSE = IconLoader.getIcon("/edu/clemson/resolve/icons/collapseall.png");
-    public static final Icon EXPAND = IconLoader.getIcon("/edu/clemson/resolve/icons/expandall.png");
-    public static final Icon SORT_PROVED = IconLoader.getIcon("/edu/clemson/resolve/icons/sort_proved.png");
-    public static final Icon EXPORT = IconLoader.getIcon("/edu/clemson/resolve/icons/export.png");
 
     /**
      * Places a small icon (mark) in the lower right hand corner of the {@code base} icon.

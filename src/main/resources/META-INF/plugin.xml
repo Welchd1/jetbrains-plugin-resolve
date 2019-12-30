@@ -1,122 +1,31 @@
-<idea-plugin version="2">
-    <id>edu.clemson.resolve.jetbrains</id>
-    <name>RESOLVE language plugin</name>
+<idea-plugin>
+    <id>edu.clemson.resolve</id>
+    <name>RESOLVE</name>
     <version>0.1.2a</version>
-    <vendor email="dtw.welch@gmail.com" url="https://github.com/Welchd1/jetbrains-plugin-resolve">RESOLVE Project</vendor>
+    <vendor email="dtw.welch@gmail.com" url="https://github.com/Welchd1/jetbrains-plugin-resolve">Clemson RSRG</vendor>
 
     <description><![CDATA[
         Provides support for the RESOLVE specification and programming language.
     ]]></description>
 
     <change-notes><![CDATA[
+        Initial commit; filetypes, icons, templates, and other
+        foundational stuff.
         ]]>
     </change-notes>
 
     <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="131"/>
 
-    <depends>com.intellij.modules.lang</depends>
-    <depends optional="true" config-file="java-deps.xml">com.intellij.modules.java</depends>
-    <module-components>
-        <component>
-            <implementation-class>edu.clemson.resolve.jetbrains.project.RESOLVEModuleLibrariesInitializer</implementation-class>
-        </component>
-    </module-components>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-
-        <internalFileTemplate name="RESOLVE File"/>
-
-        <!-- project -->
-        <applicationService serviceImplementation="edu.clemson.resolve.jetbrains.project.RESOLVEApplicationLibrariesService"/>
-        <projectService serviceImplementation="edu.clemson.resolve.jetbrains.project.RESOLVEProjectLibrariesService"/>
-        <moduleService serviceImplementation="edu.clemson.resolve.jetbrains.project.RESOLVEModuleLibrariesService"/>
-
-        <!--<moduleService serviceImplementation="edu.clemson.resolve.jetbrains.project.RESOLVEModuleSettings"/>
-        <projectService serviceImplementation="edu.clemson.resolve.jetbrains.project.RESOLVEExcludedPathsSettings"/>
-        <applicationService serviceImplementation="edu.clemson.resolve.jetbrains.project.RESOLVECodeInsightSettings"/>-->
-
-        <!-- live template & contexts -->
-        <defaultLiveTemplatesProvider implementation="edu.clemson.resolve.jetbrains.template.RESOLVELiveTemplatesProvider"/>
-        <liveTemplateContext implementation="edu.clemson.resolve.jetbrains.template.RESOLVEEverywhereContextType"/>
-        <liveTemplateContext implementation="edu.clemson.resolve.jetbrains.template.RESOLVELiveTemplateContextType$RESOLVEFileContextType"/>
-
-        <liveTemplateContext implementation="edu.clemson.resolve.jetbrains.template.RESOLVELiveTemplateContextType$RESOLVEFacilityModuleContextType"/>
-        <liveTemplateContext implementation="edu.clemson.resolve.jetbrains.template.RESOLVELiveTemplateContextType$RESOLVEConceptModuleContextType"/>
-        <liveTemplateContext implementation="edu.clemson.resolve.jetbrains.template.RESOLVELiveTemplateContextType$RESOLVEConceptExtModuleContextType"/>
-        <liveTemplateContext implementation="edu.clemson.resolve.jetbrains.template.RESOLVELiveTemplateContextType$RESOLVEImplModuleContextType"/>
-
-        <liveTemplateContext implementation="edu.clemson.resolve.jetbrains.template.RESOLVELiveTemplateContextType$RESOLVEMathRefContextType"/>
-        <liveTemplateContext implementation="edu.clemson.resolve.jetbrains.template.RESOLVELiveTemplateContextType$RESOLVEMathDefContextType"/>
-
-        <!-- misc
-        <lang.findUsagesProvider language="RESOLVE" implementationClass="com.goide.usages.GoFindUsagesProvider"/>-->
-        <lang.parserDefinition language="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.RESOLVEParserDefinition"/>
-        <fileTypeFactory implementation="edu.clemson.resolve.jetbrains.RESOLVEFileTypeFactory"/>
-        <lang.syntaxHighlighterFactory key="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.highlighting.RESOLVESyntaxHighlighterFactory"/>
-        <lang.psiStructureViewFactory language="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.editor.RESOLVEStructureViewFactory"/>
-        <colorSettingsPage implementation="edu.clemson.resolve.jetbrains.highlighting.RESOLVEColorsAndFontsPage"/>
-        <lang.braceMatcher language="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.editor.RESOLVEBraceMatcher"/>
-        <quoteHandler fileType="RESOLVE" className="edu.clemson.resolve.jetbrains.editor.RESOLVEQuoteHandler"/>
-        <fileIconPatcher implementation="edu.clemson.resolve.jetbrains.RESOLVEFileIconPatcher"/>
-        <codeInsight.parameterInfo language="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.editor.RESOLVEParameterInfoHandler"/>
-        <lang.documentationProvider language="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.RESOLVEDocumentationProvider"/>
-
-        <!-- completions -->
-        <completion.contributor language="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.completion.RESOLVECompletionContributor"/>
-        <completion.contributor language="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.completion.RESOLVEKeywordCompletionContributor"/>
-
-        <!-- formatter -->
-
-        <!-- sdk -->
-        <sdkType implementation="edu.clemson.resolve.jetbrains.sdk.RESOLVESdkType"/>
-        <applicationService serviceImplementation="edu.clemson.resolve.jetbrains.sdk.RESOLVEEnvironmentRESOLVE_PATHModificationTracker"/>
-        <projectService serviceInterface="edu.clemson.resolve.jetbrains.sdk.RESOLVESdkService" serviceImplementation="edu.clemson.resolve.jetbrains.sdk.RESOLVESmallSdkService"
-                        overrides="false"/>
-        <library.presentationProvider implementation="edu.clemson.resolve.jetbrains.sdk.RESOLVESdkLibraryPresentationProvider"/>
-        <!--<editorNotificationProvider implementation="edu.clemson.resolve.jetbrains.inspections.WrongSdkConfigurationNotificationProvider"/>-->
-        <!--<editorNotificationProvider implementation="edu.clemson.resolve.jetbrains.inspections.RESOLVEFileIgnoredByBuildToolNotificationProvider"/>-->
-        <!--<stepsBeforeRunProvider implementation="edu.clemson.resolve.jetbrains.runconfig.before.RESOLVEBeforeRunTaskProvider"/>-->
-
-        <!-- run single file (prog) -->
-        <configurationType implementation="edu.clemson.resolve.jetbrains.runconfig.program.RESOLVEProgramRunConfigurationType"/>
-        <runConfigurationProducer implementation="edu.clemson.resolve.jetbrains.runconfig.program.RESOLVEProgramRunConfigurationProducer"/>
-        <programRunner id="resolveRunner" implementation="edu.clemson.resolve.jetbrains.runconfig.RESOLVERunner"/>
-        <runLineMarkerContributor language="RESOLVE" implementationClass="edu.clemson.resolve.jetbrains.runconfig.RESOLVERunLineMarkerProvider"/>
-
-        <!-- color schemes -->
-        <!--<bundledColorScheme path="colorscheme/GithubStyle - dtwelch"/>-->
+        <!-- Add your extensions here -->
     </extensions>
 
-    <application-components>
-    <!-- Add your application components here -->
-    </application-components>
-
-    <project-components>
-        <component>
-            <implementation-class>edu.clemson.resolve.jetbrains.RESOLVEPluginController</implementation-class>
-        </component>
-    </project-components>
-
     <actions>
-        <action id="resolve.NewRESOLVEFile" class="edu.clemson.resolve.jetbrains.actions.RESOLVECreateFileAction"
-                text="RESOLVE File" description="Create a new RESOLVE file">
-            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile"/>
-        </action>
-            <action id="resolve.GenVCs" class="edu.clemson.resolve.jetbrains.actions.GenerateVCsAction"
-                                 text="RESOLVE Generate VCs">
-            <keyboard-shortcut keymap="$default" first-keystroke="control shift H"/>
-            <add-to-group group-id="ToolsMenu" anchor="before" relative-to-action="com.intellij.tools.ExternalToolsGroup"/>
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
-        </action>
-        <action id="resolve.Analyze" class="edu.clemson.resolve.jetbrains.actions.AnalyzeAction"
-                text="RESOLVE Analyze Current Source">
-            <keyboard-shortcut keymap="$default" first-keystroke="control shift G"/>
-            <add-to-group group-id="ToolsMenu" anchor="before" relative-to-action="com.intellij.tools.ExternalToolsGroup"/>
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
-        </action>
+        <!-- Add your actions here -->
     </actions>
-
 </idea-plugin>

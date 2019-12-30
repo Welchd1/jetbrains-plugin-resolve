@@ -9,12 +9,12 @@ import javax.swing.*;
 /**
  * The {@link LanguageFileType} for RESOLVE files.
  */
-public class RESOLVEFileType extends LanguageFileType {
+public class ResolveFileType extends LanguageFileType {
 
-    public static final RESOLVEFileType INSTANCE = new RESOLVEFileType();
+    public static final ResolveFileType INSTANCE = new ResolveFileType();
 
-    private RESOLVEFileType() {
-        super(RESOLVELanguage.INSTANCE);
+    private ResolveFileType() {
+        super(ResolveLanguage.INSTANCE);
     }
 
     @NotNull
@@ -38,6 +38,6 @@ public class RESOLVEFileType extends LanguageFileType {
     @Nullable
     @Override
     public Icon getIcon() {
-        return RESOLVEIcons.FILE;
+        return ResolveIcons.FILE;
     }
 }

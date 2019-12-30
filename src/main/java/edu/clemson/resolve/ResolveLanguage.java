@@ -5,23 +5,23 @@ import com.intellij.openapi.fileTypes.LanguageFileType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class RESOLVELanguage extends Language {
-    public static final RESOLVELanguage INSTANCE = new RESOLVELanguage();
+public class ResolveLanguage extends Language {
+    public static final ResolveLanguage INSTANCE = new ResolveLanguage();
 
-    private RESOLVELanguage() {
+    private ResolveLanguage() {
         super("RESOLVE");
     }
 
     @NotNull
     @Override
     public String getDisplayName() {
-        return RESOLVEConstants.RESOLVE;
+        return ResolveConstants.RESOLVE;
     }
 
     @Nullable
     @Override
     public LanguageFileType getAssociatedFileType() {
-        return RESOLVEFileType.INSTANCE;
+        return ResolveFileType.INSTANCE;
     }
 
     @Override

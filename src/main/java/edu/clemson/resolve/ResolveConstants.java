@@ -1,9 +1,9 @@
-package edu.clemson.resolve.jetbrains;
+package edu.clemson.resolve;
 
 import com.intellij.notification.NotificationGroup;
 import org.jetbrains.annotations.NonNls;
 
-public class RESOLVEConstants {
+public class ResolveConstants {
 
     public static final String RESOLVE_PATH = "RESOLVEPATH";
     public static final String RESOLVE_ROOT = "RESOLVEROOT";
@@ -17,6 +17,6 @@ public class RESOLVEConstants {
     @NonNls
     public static final String RESOLVE = "RESOLVE";
 
-    private RESOLVEConstants() {
+    private ResolveConstants() {
     }
 }
