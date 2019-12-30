@@ -1,3 +1,0 @@
-Facility Constants;
-    Var X : Std_Int::Integer;  X := 33; X := 0;
-end Constants;

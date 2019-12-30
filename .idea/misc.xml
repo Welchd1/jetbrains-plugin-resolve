@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="HaskellBuildOptions">
     <ghcPath>/Applications/ghc-7.10.3.app/Contents/bin/ghc</ghcPath>
     <cabalPath>/Applications/ghc-7.10.3.app/Contents/bin/cabal</cabalPath>
     <stackPath>/Applications/ghc-7.10.3.app/Contents/bin/stack</stackPath>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="IntelliJ IDEA Community Edition IC-163.10154.41" project-jdk-type="IDEA JDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="IntelliJ IDEA Community Edition IC-193.5662.53" project-jdk-type="IDEA JDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

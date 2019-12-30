@@ -1,7 +1,0 @@
-Facility Hello;
-    uses Std_Char_Strings;
-
-    Operation Main();
-    Procedure Std_Char_Str_Fac::Write_Line("Hello world");
-        end Main;
-end Hello;

@@ -1,8 +1,0 @@
-Precis Definitions;
-
-    Definition Foo(x : B) : N is {x : N | p(x) = true};
-
-    Definition Foo2(x, y : Z) : B is
-        Forall x, y : Z, Exists b : B, ss(x)(y) = 0;
-
-end Definitions;

@@ -1,4 +1,0 @@
-Concept OpParameterModeKeywords;
-
-    Operation Foo (<caret>);
-end OpParameterModeKeywords;

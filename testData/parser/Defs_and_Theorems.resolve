@@ -1,7 +1,0 @@
-Precis Defs_and_Theorems;
-
-    Definition Is_Reflexive(p : (D : SSet) * D -> B) : B is
-        Forall x : D, x p x;
-
-    Theorem R1n1: Forall D : SSet, Forall p : D * D -> B, f(p) implies g(p);
-end Defs_and_Theorems;

@@ -1,6 +1,0 @@
-Facility Escaped_Quotes;
-
-    Operation T(); Procedure Write_Line('\a');
-                             Write_Line('\\');
-                             Write_Line('\'); end T;
-end Escaped_Quotes;

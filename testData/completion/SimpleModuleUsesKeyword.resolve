@@ -1,9 +1,0 @@
-Facility SimpleModuleUsesKeyword;
-    uses x, y, z;
-
-    <caret>
-    Operation Foo ();
-        Procedure
-
-    end Foo;
-end SimpleModuleUsesKeyword;

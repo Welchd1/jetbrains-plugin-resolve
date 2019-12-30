@@ -1,5 +1,0 @@
-Concept TopLevelConceptModuleKeywords(type Entry; evaluates k : Int);
-     uses x, y, z;
-
-     <caret>
-end TopLevelConceptModuleKeywords;

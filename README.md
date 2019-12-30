@@ -27,13 +27,13 @@ See our [github releases](https://github.com/Welchd1/resolve-intellij-plugin/rel
 ## Screenshots
 
 ### Syntax highlighting and error reporting
-![Syntax errors](resources/images/syntax-errors.png)
+![Syntax errors](src/main/resources/images/syntax-errors.png)
 
 ### Keyword completion
-![Keyword completion](resources/images/keyword-completion.png)
+![Keyword completion](src/main/resources/images/keyword-completion.png)
 
 ### Live templates
-![Live templates](resources/images/live-templates.png)
+![Live templates](src/main/resources/images/live-templates.png)
 
 Live templates are predefined 'documents with holes' that users
 can fill in dynamically. These are a good match for RESOLVE's more syntactically
@@ -51,11 +51,11 @@ We currently support live templates for the following constructs:
 - procedures
 
 ### Reference completion
-![Ref completion](resources/images/reference-completion.png)
+![Ref completion](src/main/resources/images/reference-completion.png)
 
 ### File type legend
 
-![Standard libs](resources/images/icon-legend.png)
+![Standard libs](src/main/resources/images/icon-legend.png)
 
 Think of orange circular icons as non-executable *specification* based modules (e.g. concepts, extension) and greenish/teal icons as *implementations* -- with blue reserved exclusively for RESOLVE's mathematical developments.
 
@@ -65,15 +65,15 @@ within.
 ### RESOLVE compiler integration
 You can generate code for a `.resolve` file by right clicking and selecting the "generate code" button:
 
-![Code gen](resources/images/generate-code.png)
+![Code gen](src/main/resources/images/generate-code.png)
 
 By default, generated code will get written to `\gen` at which point, it can be executed by simply creating a standard java run configuration. After this, execution results will display as usual in the IDE's terminal:
 
-![Output console](resources/images/compiler-output.png)
+![Output console](src/main/resources/images/compiler-output.png)
 
 ### Color preferences
 
-![Live preview](resources/images/color-prefs.png)
+![Live preview](src/main/resources/images/color-prefs.png)
 
 ## Desirable future developments
 

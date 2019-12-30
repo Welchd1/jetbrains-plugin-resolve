@@ -1,8 +1,0 @@
-Concept MathSelectorAccessExp1;
-
-    Type family F is modeled by Cart_Prod
-        Curr_Loc, Curr_Pos : B;
-    end;
-    exemplar p;
-    constraints p.<caret>
-end MathSelectorAccessExp1;

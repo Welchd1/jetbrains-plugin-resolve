@@ -1,7 +1,0 @@
-Type Vertex = Record
-    x, y : Std_Ints::Integer;
-end;
-
-Var V : Vertex;
-Var X : Std_Ints::Integer;
-X := V.x + V.y;

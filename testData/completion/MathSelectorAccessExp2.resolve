@@ -1,9 +1,0 @@
-Concept MathSelectorAccessExp2;
-    Type family F is modeled by Cart_Prod
-        x, y, z : Z;    Curr_Place, Curr_Pos : B;
-    end;
-    exemplar p;
-         
-    Operation Foo (updates P : F);
-        requires P.<caret>
-end MathSelectorAccessExp2;
