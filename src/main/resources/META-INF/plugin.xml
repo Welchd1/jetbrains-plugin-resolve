@@ -22,6 +22,8 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <fileType name="RESOLVE" implementationClass="edu.clemson.resolve.ResolveLanguage$ResolveFileType" fieldName="INSTANCE"
+                  language="RESOLVE" extensions="resolve"/>
         <!-- Add your extensions here -->
     </extensions>
 
