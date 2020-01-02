@@ -82,7 +82,7 @@ public class ResolveSdkType extends SdkType {
     @Nullable
     @Override
     public String getVersionString(@NotNull String sdkHome) {
-        return RESOLVESdkUtil.retrieveRESOLVEVersion(sdkHome);
+        return ResolveSdkUtil.retrieveResolveVersion(sdkHome);
     }
 
     @Nullable
@@ -119,7 +119,8 @@ public class ResolveSdkType extends SdkType {
         if (path == null) return;
         modificator.setHomePath(path);
 
-        for (VirtualFile file : RESOLVESdkUtil.getSdkDirectoriesToAttach(path, versionString)) {
+        for (VirtualFile file : ResolveSdkUtil.getSdkDirectoriesToAttach(
+                path, versionString)) {
             modificator.addRoot(file, OrderRootType.CLASSES);
             modificator.addRoot(file, OrderRootType.SOURCES);
         }
@@ -164,7 +165,7 @@ public class ResolveSdkType extends SdkType {
                         String result = null;
                         String sdkHomePath = getSdkHomePath(module);
                         if (sdkHomePath != null) {
-                            result = ResolveSdkUtil.retrieveRESOLVEVersion(sdkHomePath);
+                            result = ResolveSdkUtil.retrieveResolveVersion(sdkHomePath);
                         }
                         return CachedValueProvider.Result.create(
                                 result, ResolveSdkService.this);
@@ -180,12 +181,12 @@ public class ResolveSdkType extends SdkType {
          * for providing RESOLVE-specific code insight.
          */
         @Contract("null -> false")
-        public boolean isRESOLVEModule(@Nullable Module module) {
+        public boolean isResolveModule(@Nullable Module module) {
             return module != null && !module.isDisposed() &&
                     ModuleType.get(module) == ResolveModuleType.getInstance();
         }
 
-        public static boolean isRESOLVESdkLibRoot(@NotNull VirtualFile root) {
+        public static boolean isResolveSdkLibRoot(@NotNull VirtualFile root) {
             return root.isInLocalFileSystem() &&
                     root.isDirectory() &&
                     ResolveSdkUtil.retrieveResolveVersion(
