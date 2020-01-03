@@ -5,29 +5,12 @@ plugins {
     id("org.jetbrains.grammarkit") version "2019.3"
     id 'antlr'
 }
-apply plugin: 'idea'
-apply plugin: 'java'
 
-allprojects {
-
-    apply plugin: 'java'
-    apply plugin: 'org.jetbrains.intellij'
-    /*idea {
-        module {
-            generatedSourceDirs.add(file("src/gen"))
-        }
-    }
-
-    sourceSets {
-        java.srcDirs("src/gen")
-    }*/
-
-    intellij {
-        version '2019.3.1'
-        pluginName = 'jetbrains-plugin-resolve'
-        plugins = ['java']
-        downloadSources = true
-    }
+intellij {
+    version '2019.3.1'
+    pluginName = 'jetbrains-plugin-resolve'
+    plugins = ['java'] //needs this line or the intellij plugin dev sources don't download...
+    downloadSources = true
 }
 
 group 'edu.clemson.computing'
