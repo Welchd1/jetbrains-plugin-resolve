@@ -34,7 +34,6 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 
-
 def htmlFixer = {htmlFile -> file(htmlFile).text.replace('<html>', '').replace('</html>', '')}
 
 patchPluginXml {

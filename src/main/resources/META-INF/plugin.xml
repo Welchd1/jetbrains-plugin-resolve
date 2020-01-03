@@ -22,10 +22,14 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileType name="RESOLVE" implementationClass="edu.clemson.resolve.ResolveLanguage$ResolveFileType" fieldName="INSTANCE"
-                  language="RESOLVE" extensions="resolve"/>
         <!-- Add your extensions here -->
 
+        <internalFileTemplate name="RESOLVE File"/>
+
+        <fileType name="RESOLVE" implementationClass="edu.clemson.resolve.ResolveLanguage$ResolveFileType" fieldName="INSTANCE"
+                  language="RESOLVE" extensions="resolve"/>
+
+        <moduleType id="RESOLVE_MODULE" implementationClass="edu.clemson.resolve.ResolveModuleType"/>
         <sdkType implementation="edu.clemson.resolve.sdk.ResolveSdkType"/>
         <applicationService serviceImplementation="edu.clemson.resolve.sdk.ResolvePathModificationTracker"/>
         <projectService serviceImplementation="edu.clemson.resolve.sdk.ResolveSdkType$ResolveSdkService"
@@ -34,6 +38,10 @@
     </extensions>
 
     <actions>
+        <action id="resolve.NewRESOLVEFile" class="edu.clemson.resolve.actions.ResolveCreateFileAction"
+                text="RESOLVE File" description="Create a new RESOLVE file">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile"/>
+        </action>
         <!-- Add your actions here -->
     </actions>
 </idea-plugin>

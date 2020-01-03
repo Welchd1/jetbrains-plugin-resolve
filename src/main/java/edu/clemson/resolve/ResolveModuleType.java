@@ -16,6 +16,7 @@ import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -62,7 +63,7 @@ public class ResolveModuleType
     @NotNull
     @Override
     public Icon getNodeIcon(boolean isOpened) {
-        return ResolveIcons.MODULE;
+        return ResolveIcons.TOOL_ICON;
     }
 
     @NotNull
@@ -96,7 +97,7 @@ public class ResolveModuleType
 
         @Override
         public List<Pair<String, String>> getSourcePaths() {
-            return ContainerUtil.emptyList();
+            return Collections.emptyList();
         }
 
         @NotNull

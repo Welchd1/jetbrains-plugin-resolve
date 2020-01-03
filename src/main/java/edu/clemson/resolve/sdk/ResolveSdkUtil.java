@@ -27,7 +27,7 @@ public final class ResolveSdkUtil {
     // \d   Any digit [0-9]
     //So this pattern allows matching things like 1.1rc2
     private static final Pattern RESOLVE_VERSION_PATTERN =
-            Pattern.compile("[\\d.]+\\w+(\\d+)?");
+            Pattern.compile("[\\d.]+(\\w+)?(\\d+)");
 
     private static final Key<String> RESOLVE_VER_DATA_KEY =
             Key.create("RESOLVE_VERSION_KEY");
@@ -67,7 +67,7 @@ public final class ResolveSdkUtil {
                 }
                 String path =
                         "/compiler/resources/edu/clemson/resolve/util/version"
-                        .replaceAll("/", File.pathSeparator);
+                        .replaceAll("/", File.separator);
                 VirtualFile versionFile =
                         sdkRoot.findFileByRelativePath(path);
 
@@ -99,7 +99,7 @@ public final class ResolveSdkUtil {
     static String parseResolveVersion(@NotNull String text) {
         Matcher matcher = RESOLVE_VERSION_PATTERN.matcher(text);
         if (matcher.find()) {
-            return matcher.group(1);
+            return matcher.group();
         }
         return null;
     }
