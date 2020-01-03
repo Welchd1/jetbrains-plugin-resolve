@@ -1,15 +1,22 @@
 package edu.clemson.resolve;
 
+import com.intellij.compiler.CompilerWorkspaceConfiguration;
 import com.intellij.ide.util.projectWizard.*;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleType;
 import com.intellij.openapi.module.ModuleTypeManager;
+import com.intellij.openapi.options.ConfigurationException;
+import com.intellij.openapi.projectRoots.SdkTypeId;
+import com.intellij.openapi.roots.ModifiableRootModel;
 import com.intellij.openapi.roots.ui.configuration.ModulesProvider;
+import com.intellij.openapi.util.Pair;
+import com.intellij.util.containers.ContainerUtil;
 import edu.clemson.resolve.sdk.ResolveSdkType;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.util.List;
 
 /**
  * Allows registration of RESOLVE specific projects on the new project page. This
@@ -62,7 +69,8 @@ public class ResolveModuleType
     public ModuleWizardStep[] createWizardSteps(@NotNull WizardContext wizardContext,
                                                 @NotNull final ResolveModuleBuilder moduleBuilder,
                                                 @NotNull ModulesProvider modulesProvider) {
-        return new ModuleWizardStep[]{
+
+        return new ModuleWizardStep[] {
                 new ProjectJdkForModuleStep(wizardContext, ResolveSdkType.getInstance()) {
                     @Override
                     public void updateDataModel() {
@@ -78,8 +86,35 @@ public class ResolveModuleType
             ModuleBuilderListener {
 
         @Override
-        public void moduleCreated(@NotNull Module module) {
+        public void setupRootModel(
+                @NotNull ModifiableRootModel modifiableRootModel)
+                throws ConfigurationException {
 
+            addListener(this);
+            super.setupRootModel(modifiableRootModel);
+        }
+
+        @Override
+        public List<Pair<String, String>> getSourcePaths() {
+            return ContainerUtil.emptyList();
+        }
+
+        @NotNull
+        @Override
+        public ModuleType getModuleType() {
+            return ResolveModuleType.getInstance();
+        }
+
+        @Override
+        public boolean isSuitableSdkType(SdkTypeId sdkType) {
+            return sdkType == ResolveSdkType.getInstance();
+        }
+
+        @Override
+        public void moduleCreated(@NotNull Module module) {
+            CompilerWorkspaceConfiguration
+                    .getInstance(module.getProject())
+                    .CLEAR_OUTPUT_DIRECTORY = false;
         }
     }
 }

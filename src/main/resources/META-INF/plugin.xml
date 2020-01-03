@@ -25,6 +25,12 @@
         <fileType name="RESOLVE" implementationClass="edu.clemson.resolve.ResolveLanguage$ResolveFileType" fieldName="INSTANCE"
                   language="RESOLVE" extensions="resolve"/>
         <!-- Add your extensions here -->
+
+        <sdkType implementation="edu.clemson.resolve.sdk.ResolveSdkType"/>
+        <applicationService serviceImplementation="edu.clemson.resolve.sdk.ResolvePathModificationTracker"/>
+        <projectService serviceImplementation="edu.clemson.resolve.sdk.ResolveSdkType$ResolveSdkService"
+                        overrides="false"/>
+        <library.presentationProvider implementation="edu.clemson.resolve.sdk.ResolveSdkPresentationProvider"/>
     </extensions>
 
     <actions>

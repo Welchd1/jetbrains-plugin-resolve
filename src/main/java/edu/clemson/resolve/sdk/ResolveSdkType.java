@@ -1,15 +1,18 @@
 package edu.clemson.resolve.sdk;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ComponentManager;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.externalSystem.service.execution.NotSupportedException;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleType;
-import com.intellij.openapi.module.ModuleUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.*;
+import com.intellij.openapi.roots.ModuleRootManager;
+import com.intellij.openapi.roots.ModuleRootModificationUtil;
 import com.intellij.openapi.roots.OrderRootType;
+import com.intellij.openapi.roots.ProjectRootManager;
+import com.intellij.openapi.roots.ui.configuration.ProjectSettingsService;
 import com.intellij.openapi.util.SimpleModificationTracker;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VfsUtilCore;
@@ -93,13 +96,15 @@ public class ResolveSdkType extends SdkType {
 
     @Nullable
     @Override
-    public AdditionalDataConfigurable createAdditionalDataConfigurable(@NotNull SdkModel sdkModel,
-                                                                       @NotNull SdkModificator sdkModificator) {
+    public AdditionalDataConfigurable createAdditionalDataConfigurable(
+            @NotNull SdkModel sdkModel,
+            @NotNull SdkModificator sdkModificator) {
         return null;
     }
 
     @Override
-    public void saveAdditionalData(@NotNull SdkAdditionalData additionalData, @NotNull Element additional) {
+    public void saveAdditionalData(@NotNull SdkAdditionalData additionalData,
+                                   @NotNull Element additional) {
     }
 
     @NotNull
@@ -143,12 +148,60 @@ public class ResolveSdkType extends SdkType {
 
         @Nullable
         public String getSdkHomePath(@Nullable Module module) {
-            throw new NotSupportedException("Not yet implemented");
+            ComponentManager holder = ObjectUtils.notNull(module, project);
+            return CachedValuesManager.getManager(project).getCachedValue(holder,
+                    () -> {
+                        Sdk sdk = getRESOLVESdk(module);
+                        return CachedValueProvider.Result.create(sdk != null
+                                ? sdk.getHomePath()
+                                : null, ResolveSdkService.this);
+                    });
+        }
+
+        private Sdk getRESOLVESdk(@Nullable Module module) {
+            if (module != null) {
+                Sdk sdk = ModuleRootManager
+                        .getInstance(module)
+                        .getSdk();
+                if (sdk != null && sdk.getSdkType() instanceof ResolveSdkType) {
+                    return sdk;
+                }
+            }
+            Sdk sdk = ProjectRootManager
+                    .getInstance(project)
+                    .getProjectSdk();
+            return sdk != null && sdk.getSdkType() instanceof ResolveSdkType
+                    ? sdk : null;
         }
 
         @Nullable
-        public String getSdkCompilerJarPath(@Nullable Module module) {
-            throw new NotSupportedException("Not yet implemented");
+        public String getSdkCompilerJarPath(@Nullable final Module module) {
+            ComponentManager holder = ObjectUtils.notNull(module, project);
+            return CachedValuesManager.getManager(project).getCachedValue(holder,
+                    () -> {
+                        Sdk sdk = getRESOLVESdk(module);
+                        if (sdk != null) { //TODO: Ugly..
+                            VirtualFile homeDir = sdk.getHomeDirectory();
+                            if (homeDir != null) {
+                                for (VirtualFile vfile : homeDir.getChildren()) {
+                                    if (vfile.getName().equals("compiler")
+                                            && vfile.isDirectory()) {
+                                        for (VirtualFile f : vfile.getChildren()) {
+                                            if (f.getName().endsWith(".jar")) {
+                                                return CachedValueProvider.Result
+                                                        .create(f.getPath(),
+                                                        ResolveSdkService.this);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        return CachedValueProvider
+                                .Result
+                                .create(null,
+                                ResolveSdkService.this);
+                    });
         }
 
         static String libraryRootToSdkPath(@NotNull VirtualFile root) {
@@ -165,7 +218,8 @@ public class ResolveSdkType extends SdkType {
                         String result = null;
                         String sdkHomePath = getSdkHomePath(module);
                         if (sdkHomePath != null) {
-                            result = ResolveSdkUtil.retrieveResolveVersion(sdkHomePath);
+                            result = ResolveSdkUtil
+                                    .retrieveResolveVersion(sdkHomePath);
                         }
                         return CachedValueProvider.Result.create(
                                 result, ResolveSdkService.this);
@@ -173,7 +227,16 @@ public class ResolveSdkType extends SdkType {
         }
 
         public void chooseAndSetSdk(@Nullable Module module) {
-
+            Sdk projectSdk = ProjectSettingsService
+                    .getInstance(project)
+                    .chooseAndSetSdk();
+            if (projectSdk == null && module != null) {
+                ApplicationManager.getApplication().runWriteAction(() -> {
+                    if (!module.isDisposed()) {
+                        ModuleRootModificationUtil.setSdkInherited(module);
+                    }
+                });
+            }
         }
 
         /**

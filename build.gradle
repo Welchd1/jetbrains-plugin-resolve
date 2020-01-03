@@ -1,14 +1,37 @@
 plugins {
+    id 'idea'
     id 'java'
     id 'org.jetbrains.intellij' version '0.4.15'
     id("org.jetbrains.grammarkit") version "2019.3"
     id 'antlr'
 }
+apply plugin: 'idea'
+apply plugin: 'java'
+
+allprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'org.jetbrains.intellij'
+    /*idea {
+        module {
+            generatedSourceDirs.add(file("src/gen"))
+        }
+    }
+
+    sourceSets {
+        java.srcDirs("src/gen")
+    }*/
+
+    intellij {
+        version '2019.3.1'
+        pluginName = 'jetbrains-plugin-resolve'
+        plugins = ['java']
+        downloadSources = true
+    }
+}
 
 group 'edu.clemson.computing'
 version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -27,11 +50,12 @@ dependencies {
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
-intellij {
-    version '2019.3.1'
-}
+
+
+def htmlFixer = {htmlFile -> file(htmlFile).text.replace('<html>', '').replace('</html>', '')}
+
 patchPluginXml {
-    changeNotes """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+    changeNotes = htmlFixer('src/main/resources/META-INF/change-notes.html')
+    pluginDescription = htmlFixer('src/main/resources/META-INF/description.html')
+    sinceBuild = '193'
 }
