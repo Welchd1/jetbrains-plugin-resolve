@@ -1,4 +1,4 @@
-package edu.clemson.resolve.sdk;
+package edu.clemson.resolve.project;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.PathMacros;
@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.File;
 import java.util.*;
 
-public class ResolvePathModificationTracker {
+public class ResolveLibrariesPathModificationTracker {
 
     private final Set<String> pathsToTrack =
             new HashSet<>();
@@ -33,7 +33,7 @@ public class ResolvePathModificationTracker {
                 .getValue(ResolveConstants.RESOLVE_PATH);
     }
 
-    public ResolvePathModificationTracker() {
+    public ResolveLibrariesPathModificationTracker() {
         String resPath = retrieveResolvePathFromEnvironment();
         if (resPath != null) {
             String home = SystemProperties.getUserHome();
@@ -112,7 +112,7 @@ public class ResolvePathModificationTracker {
     }
 
     public static Collection<VirtualFile> getRESOLVEEnvironmentRESOLVE_PATHRoots() {
-        return ServiceManager.getService(ResolvePathModificationTracker.class)
+        return ServiceManager.getService(ResolveLibrariesPathModificationTracker.class)
                 .getResolvePathRoots();
     }
 }

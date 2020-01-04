@@ -62,7 +62,7 @@ public class ResolveSdkType extends SdkType {
 
     @Override
     public boolean isValidSdkHome(@NotNull String sdkHomePath) {
-        //note that we don't explicitly validate the resolve compiler jar
+        //note that we don't explicitly validate the resolve compiler folder
         //exists here---no need, as this will return null if it doesn't find a
         //suitable version.
         // (the version is embedded in it)
@@ -73,6 +73,7 @@ public class ResolveSdkType extends SdkType {
         return true;
     }
 
+    @NotNull
     @Override
     public String suggestSdkName(String currentSdkName, String sdkHome) {
         String version = getVersionString(sdkHome);
@@ -172,36 +173,6 @@ public class ResolveSdkType extends SdkType {
                     .getProjectSdk();
             return sdk != null && sdk.getSdkType() instanceof ResolveSdkType
                     ? sdk : null;
-        }
-
-        @Nullable
-        public String getSdkCompilerJarPath(@Nullable final Module module) {
-            ComponentManager holder = ObjectUtils.notNull(module, project);
-            return CachedValuesManager.getManager(project).getCachedValue(holder,
-                    () -> {
-                        Sdk sdk = getRESOLVESdk(module);
-                        if (sdk != null) { //TODO: Ugly..
-                            VirtualFile homeDir = sdk.getHomeDirectory();
-                            if (homeDir != null) {
-                                for (VirtualFile vfile : homeDir.getChildren()) {
-                                    if (vfile.getName().equals("compiler")
-                                            && vfile.isDirectory()) {
-                                        for (VirtualFile f : vfile.getChildren()) {
-                                            if (f.getName().endsWith(".jar")) {
-                                                return CachedValueProvider.Result
-                                                        .create(f.getPath(),
-                                                        ResolveSdkService.this);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        return CachedValueProvider
-                                .Result
-                                .create(null,
-                                ResolveSdkService.this);
-                    });
         }
 
         static String libraryRootToSdkPath(@NotNull VirtualFile root) {

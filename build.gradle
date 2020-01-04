@@ -39,5 +39,5 @@ def htmlFixer = {htmlFile -> file(htmlFile).text.replace('<html>', '').replace('
 patchPluginXml {
     changeNotes = htmlFixer('src/main/resources/META-INF/change-notes.html')
     pluginDescription = htmlFixer('src/main/resources/META-INF/description.html')
-    sinceBuild = '193'
+    sinceBuild = '191'
 }
