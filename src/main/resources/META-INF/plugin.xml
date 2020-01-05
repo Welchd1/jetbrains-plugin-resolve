@@ -26,6 +26,11 @@
 
         <internalFileTemplate name="RESOLVE File"/>
 
+        <!-- project -->
+        <applicationService serviceImplementation="edu.clemson.resolve.project.RESOLVEApplicationLibrariesService"/>
+        <projectService serviceImplementation="edu.clemson.resolve.project.ResolveLibrariesService$ResolveProjectLibraryService"/>
+        <moduleService serviceImplementation="edu.clemson.resolve.project.ResolveLibrariesService$ResolveModuleLibrariesService"/>
+
         <fileType name="RESOLVE" implementationClass="edu.clemson.resolve.ResolveLanguage$ResolveFileType" fieldName="INSTANCE"
                   language="RESOLVE" extensions="resolve"/>
 

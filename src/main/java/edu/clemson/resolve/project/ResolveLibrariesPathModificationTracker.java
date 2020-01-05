@@ -111,8 +111,9 @@ public class ResolveLibrariesPathModificationTracker {
         return resolvePathRoots;
     }
 
-    public static Collection<VirtualFile> getRESOLVEEnvironmentRESOLVE_PATHRoots() {
-        return ServiceManager.getService(ResolveLibrariesPathModificationTracker.class)
+    public static Collection<VirtualFile> getResolvePathRootsFromEnv() {
+        return ServiceManager
+                .getService(ResolveLibrariesPathModificationTracker.class)
                 .getResolvePathRoots();
     }
 }

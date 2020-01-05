@@ -76,17 +76,20 @@ public class ResolveLibrariesService<T extends ResolveLibrariesState>
     @NotNull
     public static ModificationTracker[] getModificationTrackers(
             @NotNull Project project, @Nullable Module module) {
-        return module != null
-                ? new ModificationTracker[]{RESOLVEModuleLibrariesService
-                .getInstance(module), RESOLVEProjectLibrariesService
-                .getInstance(module.getProject()),
-                RESOLVEApplicationLibrariesService.getInstance()}
-
-                : new ModificationTracker[]{RESOLVEProjectLibrariesService
-                .getInstance(project),
-                RESOLVEApplicationLibrariesService.getInstance()};
+        if (module != null) {
+            return new ModificationTracker[]{
+                    ResolveModuleLibrariesService
+                            .getInstance(module),
+                    ResolveProjectLibraryService
+                            .getInstance(module.getProject()),
+                    RESOLVEApplicationLibrariesService.getInstance()};
+        } else {
+            return new ModificationTracker[]{
+                    ResolveProjectLibraryService
+                            .getInstance(project),
+                    RESOLVEApplicationLibrariesService.getInstance()};
+        }
     }
-
 
     public void setLibraryRootUrls(@NotNull String... libraryRootUrls) {
         setLibraryRootUrls(Arrays.asList(libraryRootUrls));
@@ -132,9 +135,9 @@ public class ResolveLibrariesService<T extends ResolveLibrariesState>
     @State(
             name = ResolveConstants.RESOLVE_LIBRARIES_SERVICE_NAME,
             storages = {
-                    @Storage(value = StoragePathMacros.PRODUCT_WORKSPACE_FILE),
-                    @Storage(value = StoragePathMacros.CACHE_FILE + "/" +
-                            ResolveConstants.RESOLVE_LIBRARIES_CONFIG_FILE),
+                    @Storage(value = StoragePathMacros.PRODUCT_WORKSPACE_FILE)//,
+                    //@Storage(value = StoragePathMacros.CACHE_FILE + "/" +
+                    //        ResolveConstants.RESOLVE_LIBRARIES_CONFIG_FILE),
             }
     )
     public static class ResolveProjectLibraryService
@@ -160,3 +163,4 @@ public class ResolveLibrariesService<T extends ResolveLibrariesState>
                     ResolveModuleLibrariesService.class);
         }
     }
+}

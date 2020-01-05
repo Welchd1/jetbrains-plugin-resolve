@@ -6,8 +6,7 @@ import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import edu.clemson.resolve.ResolveConstants;
-import edu.clemson.resolve.jetbrains.RESOLVEConstants;
-import edu.clemson.resolve.jetbrains.sdk.RESOLVESdkUtil;
+import edu.clemson.resolve.sdk.ResolveSdkUtil;
 import org.jetbrains.annotations.NotNull;
 
 
@@ -20,11 +19,10 @@ import org.jetbrains.annotations.NotNull;
 
 @State(
         name = ResolveConstants.RESOLVE_LIBRARIES_SERVICE_NAME,
-        storages = @Storage(value = StoragePathMacros.CACHE_FILE + "/" +
-                ResolveConstants.RESOLVE_LIBRARIES_CONFIG_FILE)
+        storages = @Storage(ResolveConstants.RESOLVE_LIBRARIES_CONFIG_FILE)
 )
 public class RESOLVEApplicationLibrariesService extends
-        RESOLVELibrariesService<RESOLVEApplicationLibrariesService
+        ResolveLibrariesService<RESOLVEApplicationLibrariesService
                 .RESOLVEApplicationLibrariesState> {
 
     @NotNull
@@ -44,7 +42,7 @@ public class RESOLVEApplicationLibrariesService extends
     public void setUsingRESOLVEPathFromSystemEnvironment(boolean useRESPATHfromEnv) {
         if (state.isUsingRESOLVEPathFromSystemEnvironment() != useRESPATHfromEnv) {
             state.setUsingRESOLVEPathFromSystemEnvironment(useRESPATHfromEnv);
-            if (!RESOLVESdkUtil.getRESOLVEPathsRootsFromEnvironment().isEmpty()) {
+            if (!ResolveSdkUtil.getRESOLVEPathsRootsFromEnvironment().isEmpty()) {
                 incModificationCount();
                 ApplicationManager.getApplication()
                         .getMessageBus()
@@ -54,14 +52,16 @@ public class RESOLVEApplicationLibrariesService extends
         }
     }
 
-    static class RESOLVEApplicationLibrariesState extends RESOLVELibrariesState {
+    static class RESOLVEApplicationLibrariesState
+            extends ResolveLibrariesState {
         private boolean useRESOLVEPathFromSystemEnvironment = true;
 
         boolean isUsingRESOLVEPathFromSystemEnvironment() {
             return useRESOLVEPathFromSystemEnvironment;
         }
 
-        void setUsingRESOLVEPathFromSystemEnvironment(boolean useResPathFromSysEnv) {
+        void setUsingRESOLVEPathFromSystemEnvironment(
+                boolean useResPathFromSysEnv) {
             useRESOLVEPathFromSystemEnvironment = useResPathFromSysEnv;
         }
     }

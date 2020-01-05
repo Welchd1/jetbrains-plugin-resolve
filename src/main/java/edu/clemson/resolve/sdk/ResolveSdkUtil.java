@@ -10,6 +10,7 @@ import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.util.SystemProperties;
 import com.intellij.util.containers.ContainerUtil;
 import edu.clemson.resolve.ResolveConstants;
+import edu.clemson.resolve.project.ResolveLibrariesPathModificationTracker;
 import edu.clemson.resolve.sdk.ResolveSdkType.ResolveSdkService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -120,5 +121,11 @@ public final class ResolveSdkUtil {
             return LocalFileSystem.getInstance().findFileByPath(path);
         }
         return null;
+    }
+
+    @NotNull
+    public static Collection<VirtualFile> getRESOLVEPathsRootsFromEnvironment() {
+        return ResolveLibrariesPathModificationTracker
+                .getResolvePathRootsFromEnv();
     }
 }
