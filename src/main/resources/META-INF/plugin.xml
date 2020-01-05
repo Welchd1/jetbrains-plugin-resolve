@@ -20,6 +20,9 @@
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <!--<depends optional="true" config-file="java-deps.xml">com.intellij.modules.java</depends>-->
+
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
@@ -27,6 +30,14 @@
         <internalFileTemplate name="RESOLVE File"/>
 
         <!-- project -->
+        <moduleType id="RESOLVE_MODULE" implementationClass="edu.clemson.resolve.ResolveModuleType"/>
+        <!--<editorNotificationProvider implementation="edu.clemson.resolve.inspections.WrongModuleTypeNotificationProvider"/>-->
+        <sdkType implementation="edu.clemson.resolve.sdk.ResolveSdkType"/>
+        <applicationService serviceImplementation="edu.clemson.resolve.project.ResolveLibrariesPathModificationTracker"/>
+        <projectService serviceImplementation="edu.clemson.resolve.sdk.ResolveSdkType$ResolveSdkService"
+                        overrides="false"/>
+        <library.presentationProvider implementation="edu.clemson.resolve.sdk.ResolveSdkPresentationProvider"/>
+
         <applicationService serviceImplementation="edu.clemson.resolve.project.RESOLVEApplicationLibrariesService"/>
         <projectService serviceImplementation="edu.clemson.resolve.project.ResolveLibrariesService$ResolveProjectLibraryService"/>
         <moduleService serviceImplementation="edu.clemson.resolve.project.ResolveLibrariesService$ResolveModuleLibrariesService"/>
@@ -34,14 +45,13 @@
         <fileType name="RESOLVE" implementationClass="edu.clemson.resolve.ResolveLanguage$ResolveFileType" fieldName="INSTANCE"
                   language="RESOLVE" extensions="resolve"/>
 
-        <moduleType id="RESOLVE_MODULE" implementationClass="edu.clemson.resolve.ResolveModuleType"/>
-        <sdkType implementation="edu.clemson.resolve.sdk.ResolveSdkType"/>
-        <applicationService serviceImplementation="edu.clemson.resolve.project.ResolveLibrariesPathModificationTracker"/>
-        <projectService serviceImplementation="edu.clemson.resolve.sdk.ResolveSdkType$ResolveSdkService"
-                        overrides="false"/>
-        <library.presentationProvider implementation="edu.clemson.resolve.sdk.ResolveSdkPresentationProvider"/>
-    </extensions>
 
+    </extensions>
+    <module-components>
+        <component>
+            <implementation-class>edu.clemson.resolve.project.ResolveLibrariesInitializer</implementation-class>
+        </component>
+    </module-components>
     <actions>
         <action id="resolve.NewRESOLVEFile" class="edu.clemson.resolve.actions.ResolveCreateFileAction"
                 text="RESOLVE File" description="Create a new RESOLVE file">

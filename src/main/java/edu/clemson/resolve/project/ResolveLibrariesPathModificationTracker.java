@@ -44,6 +44,7 @@ public class ResolveLibrariesPathModificationTracker {
                 pathsToTrack.add(s);
             }
         }
+        recalculateFiles();
 
         /*Project[] projects = ProjectManager.getInstance().getOpenProjects();
         if (projects.length == 0) {

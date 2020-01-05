@@ -1,5 +1,7 @@
 package edu.clemson.resolve.sdk;
 
+import com.intellij.openapi.module.Module;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.io.FileUtil;
@@ -7,17 +9,25 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
+import com.intellij.psi.util.CachedValueProvider;
+import com.intellij.psi.util.CachedValuesManager;
+import com.intellij.util.Function;
 import com.intellij.util.SystemProperties;
 import com.intellij.util.containers.ContainerUtil;
 import edu.clemson.resolve.ResolveConstants;
+import edu.clemson.resolve.project.RESOLVEApplicationLibrariesService;
 import edu.clemson.resolve.project.ResolveLibrariesPathModificationTracker;
+import edu.clemson.resolve.project.ResolveLibrariesService;
 import edu.clemson.resolve.sdk.ResolveSdkType.ResolveSdkService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -68,7 +78,7 @@ public final class ResolveSdkUtil {
                 }
                 String path =
                         "/compiler/resources/edu/clemson/resolve/util/version"
-                        .replaceAll("/", File.separator);
+                                .replaceAll("/", File.separator);
                 VirtualFile versionFile =
                         sdkRoot.findFileByRelativePath(path);
 
@@ -80,18 +90,16 @@ public final class ResolveSdkUtil {
                                 "Cannot parse Resolve version in VERSION.txt");
                     }
                     return version;
-                }
-                else {
+                } else {
                     ResolveSdkService.LOG.debug(
                             "Cannot find Resolve version file in sdk path: "
                                     + sdkPath);
                 }
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             ResolveSdkService.LOG.debug(
                     "Cannot find Resolve " +
-                    "version file in sdk path: " + sdkPath, e);
+                            "version file in sdk path: " + sdkPath, e);
         }
         return null;
     }
@@ -124,8 +132,93 @@ public final class ResolveSdkUtil {
     }
 
     @NotNull
+    private static Collection<Object> getSdkAndLibrariesCacheDependencies(
+            @NotNull Project project,
+            @Nullable Module module) {
+        Collection<Object> dependencies = ContainerUtil.newArrayList(
+                ResolveLibrariesService.getModificationTrackers(
+                        project, module));
+        ContainerUtil.addAllNotNull(dependencies,
+                ResolveSdkService.getInstance(project));
+        return dependencies;
+    }
+
+    @NotNull
     public static Collection<VirtualFile> getRESOLVEPathsRootsFromEnvironment() {
         return ResolveLibrariesPathModificationTracker
                 .getResolvePathRootsFromEnv();
+    }
+
+    @NotNull
+    private static Collection<VirtualFile> getRESOLVEPathRoots(
+            @NotNull Project project, @Nullable Module module) {
+        Collection<VirtualFile> roots = new ArrayList<>();
+        if (RESOLVEApplicationLibrariesService.getInstance()
+                .isUsingRESOLVEPathFromSystemEnvironment()) {
+            roots.addAll(getRESOLVEPathsRootsFromEnvironment());
+        }
+        roots.addAll(module != null ?
+                ResolveLibrariesService.getUserDefinedLibraries(module) :
+                ResolveLibrariesService.getUserDefinedLibraries(project));
+        return roots;
+    }
+
+    @NotNull
+    private static List<VirtualFile> getInnerRESOLVEPathSources(
+            @NotNull Project project, @Nullable Module module) {
+        Collection<VirtualFile> pathRoots = getRESOLVEPathRoots(project, module);
+        return ContainerUtil.mapNotNull(
+                pathRoots,
+                new RetrieveSubDirectoryOrSelfFunction("src"));
+    }
+
+    @NotNull
+    public static Collection<VirtualFile> getRESOLVEPathSources(
+            @NotNull final Project project, @Nullable final Module module) {
+        if (module != null) {
+            return CachedValuesManager.getManager(project).getCachedValue(
+                    module, new CachedValueProvider<Collection<VirtualFile>>() {
+                        @Nullable
+                        @Override
+                        public Result<Collection<VirtualFile>> compute() {
+                            Collection<VirtualFile> result = new LinkedHashSet<>();
+                            Project project = module.getProject();
+                            ResolveSdkService sdkService =
+                                    ResolveSdkService.getInstance(project);
+                            result.addAll(getInnerRESOLVEPathSources(project, module));
+                            return Result.create(result, getSdkAndLibrariesCacheDependencies(project, module));
+                        }
+                    });
+        }
+        return CachedValuesManager.getManager(project).getCachedValue(project,
+                new CachedValueProvider<Collection<VirtualFile>>() {
+                    @Nullable
+                    @Override
+                    public Result<Collection<VirtualFile>> compute() {
+                        return Result.create(
+                                getInnerRESOLVEPathSources(
+                                        project, null),
+                                getSdkAndLibrariesCacheDependencies(
+                                        project, null));
+                    }
+                });
+    }
+
+    private static class RetrieveSubDirectoryOrSelfFunction
+            implements
+            Function<VirtualFile, VirtualFile> {
+        @NotNull
+        private final String subdirName;
+
+        RetrieveSubDirectoryOrSelfFunction(@NotNull String subdirName) {
+            this.subdirName = subdirName;
+        }
+
+        @Override
+        public VirtualFile fun(VirtualFile file) {
+            return file == null ||
+                    FileUtil.namesEqual(subdirName, file.getName())
+                    ? file : file.findChild(subdirName);
+        }
     }
 }
